@@ -61,3 +61,9 @@ gem "devise", "~> 4.4"
 
 # Added at 2018-05-03 10:29:42 +1000 by ChrisBook:
 gem "figaro", "~> 1.1"
+
+# Added at 2018-05-03 10:41:45 +1000 by ChrisBook:
+gem "carrierwave", "~> 1.2"
+
+# Added at 2018-05-03 10:42:00 +1000 by ChrisBook:
+gem "cloudinary", "~> 1.9"
