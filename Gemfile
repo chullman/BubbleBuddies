@@ -58,3 +58,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Added at 2018-05-03 10:25:34 +1000 by ChrisBook:
 gem "devise", "~> 4.4"
+
+# Added at 2018-05-03 10:29:42 +1000 by ChrisBook:
+gem "figaro", "~> 1.1"
