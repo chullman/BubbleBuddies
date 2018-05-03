@@ -8,7 +8,7 @@
 
 Role.create([{ role: 'admin' }, { role: 'normal' }])
 
-Cloudinary::Uploader.upload(Rails.root.join('app', 'assets', 'images', 'admin-diver.jpg'), :public_id => 'admin-diver')
+#Cloudinary::Uploader.upload(Rails.root.join('app', 'assets', 'images', 'admin-diver.jpg'), :public_id => 'admin-diver')
 
 user = User.new
 user.email = 'admin@admin.com'
@@ -17,10 +17,10 @@ user.first_name = 'admin'
 user.last_name = 'admin'
 user.role = Role.where(role: 'admin').first
 user.is_disabled = false
-user.image_cl_url = Cloudinary::Utils.cloudinary_url('admin-diver')
+user.image = Rails.root.join('app', 'assets', 'images', 'admin-diver.jpg').open
 user.save!
 
-Cloudinary::Uploader.upload(Rails.root.join('app', 'assets', 'images', 'test-diver.jpg'), :public_id => 'test-diver')
+#Cloudinary::Uploader.upload(Rails.root.join('app', 'assets', 'images', 'test-diver.jpg'), :public_id => 'test-diver')
 
 user = User.new
 user.email = 'test@test.com'
@@ -29,5 +29,5 @@ user.first_name = 'test'
 user.last_name = 'test'
 user.role = Role.where(role: 'normal').first
 user.is_disabled = false
-user.image_cl_url = Cloudinary::Utils.cloudinary_url('test-diver')
+user.image = Rails.root.join('app', 'assets', 'images', 'test-diver.jpg').open
 user.save!
