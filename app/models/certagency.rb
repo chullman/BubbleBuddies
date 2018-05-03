@@ -1,0 +1,2 @@
+class Certagency < ApplicationRecord
+end

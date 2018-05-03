@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  course_name: MyString
+  is_certification_course: false
+  is_speciality_course: false
+  is_introductory_course: false
+  certagency: one
+
+two:
+  course_name: MyString
+  is_certification_course: false
+  is_speciality_course: false
+  is_introductory_course: false
+  certagency: two

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  is_commercial_trip: false
+  location: MyString
+  is_boat_required: false
+  price: 9.99
+  comment: one
+  member_limit: 1
+  date: 2018-05-03 12:50:24
+
+two:
+  name: MyString
+  description: MyText
+  is_commercial_trip: false
+  location: MyString
+  is_boat_required: false
+  price: 9.99
+  comment: two
+  member_limit: 1
+  date: 2018-05-03 12:50:24
