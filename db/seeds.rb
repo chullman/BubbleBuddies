@@ -8,8 +8,6 @@
 
 Role.create([{ role: 'admin' }, { role: 'normal' }])
 
-#Cloudinary::Uploader.upload(Rails.root.join('app', 'assets', 'images', 'admin-diver.jpg'), :public_id => 'admin-diver')
-
 user = User.new
 user.email = 'admin@admin.com'
 user.password = 'admin'
@@ -19,8 +17,6 @@ user.role = Role.where(role: 'admin').first
 user.is_disabled = false
 user.image = Rails.root.join('app', 'assets', 'images', 'admin-diver.jpg').open
 user.save!
-
-#Cloudinary::Uploader.upload(Rails.root.join('app', 'assets', 'images', 'test-diver.jpg'), :public_id => 'test-diver')
 
 user = User.new
 user.email = 'test@test.com'

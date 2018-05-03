@@ -7,5 +7,11 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   belongs_to :role
+
+  has_many :meetupmembers
+  has_many :instructors
+  has_many :skippers
+  has_many :divers
+  has_many :comments
   
 end
