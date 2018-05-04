@@ -1,0 +1,22 @@
+<h2>Enable/disable a user account</h2>
+
+<% @users.each do |user| %>
+
+  <p>
+    <strong><%= user.username %></strong>
+    <strong><%= user.email %></strong>
+  
+
+    <%= form_for user, url: update_enablement_path(user), :method => :put do |f| %>
+      <%= f.radio_button :disabled, false %> 
+      <%= label :disabled_false, 'Active' %>
+      <%= f.radio_button :disabled, true %>
+      <%= label :disabled_true, 'Disabled' %>
+      <%= f.hidden_field :id %>
+      <%= f.submit "Change" %>
+    <% end %>
+
+  <br />
+  </p>
+
+<% end %>

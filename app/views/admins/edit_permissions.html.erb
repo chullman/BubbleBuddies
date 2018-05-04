@@ -1,0 +1,22 @@
+<h2>Enable/disable admin access for user</h2>
+
+<% @users.each do |user| %>
+
+  <p>
+    <strong><%= user.username %></strong>
+    <strong><%= user.email %></strong>
+  
+
+    <%= form_for user, url: update_permissions_path(user), :method => :put do |f| %>
+      <%= f.radio_button :role, 'normal', :checked => true %> 
+      <%= label :role_normal, 'Normal Role' %>
+      <%= f.radio_button :role, 'admin' %>
+      <%= label :role_admin, 'Admin Role' %>
+      <%= f.hidden_field :id %>
+      <%= f.submit "Change" %>
+    <% end %>
+
+  <br />
+  </p>
+
+<% end %>

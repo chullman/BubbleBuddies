@@ -1,0 +1,15 @@
+<% @users.each do |user| %>
+
+  <p>
+    <strong><%= user.username %></strong>
+    <strong><%= user.email %></strong>
+  
+
+    <%= form_for user, url: destroy_user_path(user), :method => :delete, html: {:onsubmit => "return confirm('Are you sure?');" } do |f| %>
+      <%= f.submit "Delete" %>
+    <% end %>
+
+  <br />
+  </p>
+
+<% end %>
