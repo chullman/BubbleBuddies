@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
+  accepts_nested_attributes_for :roles
+
   has_many :meetupmembers
   has_many :instructors
   has_many :skippers

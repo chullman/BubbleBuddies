@@ -12,14 +12,21 @@ class AdminsController < ApplicationController
 
   def update_permissions
     @user = User.find(params[:id])
+
     if @user.update(user_params)
-      if params[:user][:role] == "admin"
-        @user.role = "admin"
+      if params[:user][:roles_attributes]['0'][:name] == "admin"
+        @user.remove_role :normal
+        @user.save
+        @user.add_role :admin
+        @user.save
       else
-        @user.role = "normal"
+        @user.remove_role :admin
+        @user.save
+        @user.add_role :normal
+        @user.save
       end
     end
-    @user.save
+    
     redirect_to :edit_permissions
   end
 
@@ -54,7 +61,7 @@ class AdminsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:role, :is_disabled)
+    params.require(:user).permit(:role, :is_disabled, roles_attributes:[:name,:id])
   end
 
   def restrict_to_admin
