@@ -62,11 +62,10 @@ class AdminsController < ApplicationController
       redirect_to root_path
     end
 
-    user_role = Role.find(current_user.role_id)
-
-    if user_role.role != "admin"
+    if !(current_user.has_role? :admin)
       redirect_to root_path
     end
+
   end
 
 end

@@ -11,8 +11,8 @@ class RegistrationsController < Devise::RegistrationsController
       end
   
       resource.is_disabled = false
-  
-      resource.role = Role.where(role: 'normal').first
+
+      resource.add_role :normal
       
       resource.save
       yield resource if block_given?
