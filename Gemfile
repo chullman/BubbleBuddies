@@ -71,3 +71,6 @@ gem "cloudinary", "~> 1.9"
 # Added at 2018-05-04 09:30:44 +1000 by ChrisBook:
 gem "recaptcha", require: "recaptcha/rails"
 
+
+# Added at 2018-05-04 13:41:41 +1000 by ChrisBook:
+gem "rolify", "~> 5.2"

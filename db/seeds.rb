@@ -6,14 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Role.create([{ role: 'admin' }, { role: 'normal' }])
+Role.create name: :admin
+Role.create name: :normal
 
 user = User.new
 user.email = 'admin@admin.com'
 user.password = 'admin'
 user.first_name = 'admin'
 user.last_name = 'admin'
-user.role = Role.where(role: 'admin').first
+#user.role = Role.where(role: 'admin').first
+user.add_role :admin
 user.is_disabled = false
 user.image = Rails.root.join('app', 'assets', 'images', 'admin-diver.jpg').open
 user.save!
@@ -23,7 +25,7 @@ user.email = 'test@test.com'
 user.password = 'test'
 user.first_name = 'test'
 user.last_name = 'test'
-user.role = Role.where(role: 'normal').first
+user.add_role :normal
 user.is_disabled = false
 user.image = Rails.root.join('app', 'assets', 'images', 'test-diver.jpg').open
 user.save!
