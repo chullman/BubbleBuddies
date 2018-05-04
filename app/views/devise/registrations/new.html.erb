@@ -36,6 +36,9 @@
     <%= f.file_field :image %>
   </div>
 
+  <%= flash[:recaptcha_error] %>
+  <%= recaptcha_tags %>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

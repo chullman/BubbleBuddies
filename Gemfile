@@ -67,3 +67,7 @@ gem "carrierwave", "~> 1.2"
 
 # Added at 2018-05-03 10:42:00 +1000 by ChrisBook:
 gem "cloudinary", "~> 1.9"
+
+# Added at 2018-05-04 09:30:44 +1000 by ChrisBook:
+gem "recaptcha", require: "recaptcha/rails"
+
