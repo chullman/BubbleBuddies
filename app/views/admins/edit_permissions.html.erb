@@ -8,15 +8,21 @@
 
     <%= form_for user, url: update_permissions_path(user), :method => :put do |f| %>
  
-      <%= f.fields_for :roles do |ff| %>
+        <% Role.all.each do |role| %>
 
-        <%=     ff.radio_button :name, 'admin' %>
-        <%=     ff.label :name_admin, "Admin" %>
-
-        <%=     ff.radio_button :name, 'normal' %>
-        <%=     ff.label :name_normal, "Normal" %>
-        
-      <% end %>
+            <% if (role.name == "admin") && (user.has_role? :admin) %>
+              <%= f.check_box :input_roles, {multiple: true, checked: true}, role.name, nil %>
+            <% elsif (role.name == "disabled") && (user.has_role? :disabled) %>
+              <%= f.check_box :input_roles, {multiple: true, checked: true}, role.name, nil %>
+            <% elsif (role.name == "normal") && (user.has_role? :normal) %>
+              <%= f.check_box :input_roles, {multiple: true, checked: true, disabled: true}, role.name, nil %>
+            <% elsif (role.name == "normal") && (!(user.has_role? :normal)) %>
+              <%= f.check_box :input_roles, {multiple: true, disabled: true}, role.name, nil %>
+            <% else %>
+              <%= f.check_box :input_roles, {multiple: true}, role.name, nil %>
+            <% end %>
+            <%= role.name %>
+        <% end %>
 
       <%= f.submit "Change" %>
     <% end %>

@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Role.create name: :admin
+Role.create name: :disabled
 Role.create name: :normal
 
 user = User.new
@@ -16,6 +17,7 @@ user.first_name = 'admin'
 user.last_name = 'admin'
 #user.role = Role.where(role: 'admin').first
 user.add_role :admin
+user.add_role :normal
 user.is_disabled = false
 user.image = Rails.root.join('app', 'assets', 'images', 'admin-diver.jpg').open
 user.save!
