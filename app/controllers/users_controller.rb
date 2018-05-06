@@ -13,13 +13,25 @@ class UsersController < ApplicationController
     @diver.certagency_id = params[:diver][:certagency_id]
     @diver.qualification_id = params[:diver][:qualification_id]
 
-    respond_to do |format|
-       if @diver.save!
-         format.html { redirect_to home_index_path, notice: 'Diver was successfully registered' }
-       else
-         format.html { render :new_diver }
-       end
-     end
+    if Diver.where(user_id: current_user.id).first != nil
+      
+      respond_to do |format|
+        format.html { redirect_to home_index_path, notice: 'You have already registered as a diver' }
+      end
+
+    else
+
+      respond_to do |format|
+        if @diver.save!
+          format.html { redirect_to home_index_path, notice: 'Diver was successfully registered' }
+        else
+          format.html { render :new_diver }
+        end
+      end
+
+    end
+
+
   end
 
   def new_instructor
