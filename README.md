@@ -1,6 +1,9 @@
 # Bubble Buddies
 ## A two-sided marketplace for recretional SCUBA divers to find and meetup with dive buddies, and for instructors to sell their servers to fellow buddies
 
+### Demo Heroku Deployment
+
+https://bubble-buddies.herokuapp.com
 
 ### Setup for local deployment
 
