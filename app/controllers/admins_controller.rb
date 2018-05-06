@@ -46,34 +46,6 @@ class AdminsController < ApplicationController
     redirect_to :edit_permissions
   end
 
-  def edit_enablement
-    @users = User.all
-  end
-
-  def update_enablement
-    @user = User.find(params[:id])
-    if @user.update(user_params)
-
-      if params[:user][:is_disabled] == "true"
-        @user.is_disabled = true
-      else
-        @user.is_disabled = false
-      end
-    end
-    @user.save
-    redirect_to :edit_enablement
-  end
-
-  def edit_user_deletion
-    @users = User.all
-  end
-
-  def destroy_user
-    @user = User.find(params[:id])
-    @user.destroy
-    redirect_to :edit_user_deletion
-  end
-
   private
 
   def user_params
