@@ -7,7 +7,7 @@ https://bubble-buddies.herokuapp.com
 
 ### Setup for local deployment
 
-Assuming you have a rails environment up and running:
+Assuming you have a Rails environment up and running:
 
 1) Install and run a local copy of a Postgresql server
 
