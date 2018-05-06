@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   get 'users/new_diver', to: 'users#new_diver', as: 'divers_reg'
   post 'users/register_diver', to: 'users#register_diver', as: 'register_diver'
 
-  get 'users/new_skipper', to: 'users#new_skipper', as: 'skippers_reg'
   get 'users/new_instructor', to: 'users#new_instructor', as: 'instructors_reg'
+  post 'users/register_instructor', to: 'users#register_instructor', as: 'register_instructor'
 
   get '/admins', to: 'admins#index'
 

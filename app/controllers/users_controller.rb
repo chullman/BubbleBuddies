@@ -22,16 +22,69 @@ class UsersController < ApplicationController
      end
   end
 
-  def new_skipper
+  def new_instructor
+    @instructor = Instructor.new
+    @certagencies = Certagency.all
+    @courses = Course.all
   end
 
-  def new_instructor
+  def register_instructor
+    @instructor = Instructor.new(instructor_params)
+
+    if Instructor.where(user_id: current_user.id).first != nil
+      
+      respond_to do |format|
+        format.html { redirect_to home_index_path, notice: 'You have already registered as an instructor' }
+      end
+
+    else
+
+      @instructor.user_id = current_user.id
+      @instructor.certagency_id = params[:instructor][:certagency_id]
+  
+      respond_to do |format|
+        if @instructor.save!
+  
+          if Abletoteach.where(instructor_id: current_user.id).first != nil
+            respond_to do |format|
+              @instructor.destroy
+              format.html { redirect_to home_index_path, notice: 'You have already chosen the courses you are available to teach' }
+            end
+          else
+              course_to_teach_added = false
+              params[:instructor][:course][:course_name].each do |chosen_course_id|
+                Abletoteach.create({instructor_id: @instructor.id, course_id: chosen_course_id})
+                if chosen_course_id != '0'
+                  course_to_teach_added = true
+                end
+              end
+              if course_to_teach_added == false
+                @instructor.destroy
+                format.html { redirect_to home_index_path, notice: 'You must specify at least one course or speciality that you can teach' }
+              else
+                format.html { redirect_to home_index_path, notice: 'Instructor was successfully registered' }
+              end                 
+             
+          end
+         else
+          format.html { render :new_instructor }
+        end
+      end
+
+    end
+    
+
   end
+
 
   private
 
   def diver_params
     params.require(:diver).permit(:total_dives, :certagency_id, :qualification_id)
+  end
+
+  def instructor_params
+    params.require(:instructor).permit(:total_dives, :certagency_id, course_attributes:[:id, :course_name])
   end
 
 end

@@ -1,5 +1,6 @@
 <h1> BubbleBuddies </h1>
 
-<%= link_to "I'm a recreational diver", divers_reg_path %>
-<%= link_to "I'm a dive instructor", instructors_reg_path %>
-<%= link_to "I'm a skipper", skippers_reg_path %>
+<% if user_signed_in? %>
+  <%= link_to "I'm a recreational diver", divers_reg_path %>
+  <%= link_to "I'm a dive instructor", instructors_reg_path %>
+<% end %>

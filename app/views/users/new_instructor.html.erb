@@ -1,2 +1,26 @@
 <h1>Users#new_instructor</h1>
 <p>Find me in app/views/users/new_instructor.html.erb</p>
+
+<%= form_for(@instructor, url: register_instructor_path) do |form| %>
+
+  <div class="field">
+    <%= form.label :total_dives %>
+    <%= form.text_field :total_dives, id: :total_dives %>
+  </div>
+
+   <div class="field">
+    <%= form.label :certagency %><br />
+    <%= form.collection_select :certagency_id, @certagencies, :id, :cert_agency %>
+  </div>
+
+  <% @courses.each do |course| %> 
+    <%= form.fields_for :course do |form2| %>
+        <%= form2.label :course_name, course.course_name %>
+        <%= form2.check_box :course_name, {multiple: true}, course.id%>
+    <% end %>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

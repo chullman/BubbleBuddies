@@ -37,6 +37,7 @@ class AdminsController < ApplicationController
         @user.remove_role :disabled
       end
 
+      # Always give the user the normal role if the user doesn't have it (this should never happen)
       if !(@user.has_role? :normal)
         @user.add_role :normal
       end
