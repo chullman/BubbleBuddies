@@ -7,6 +7,8 @@ https://bubble-buddies.herokuapp.com
 
 ### Setup for local deployment
 
+Assuming you have a rails environment up and running:
+
 1) Install and run a local copy of a Postgresql server
 
 2) Change port in config/database.yml to your Postgresql server port, and host to wherever your Postgresql server is running
