@@ -1,24 +1,35 @@
-# README
+# Bubble Buddies
+## A two-sided marketplace for recretional SCUBA divers to find and meetup with dive buddies, and for instructors to sell their servers to fellow buddies
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+### Setup for local deployment
 
-* Ruby version
+1) Install and run a local copy of a Postgresql server
 
-* System dependencies
+2) Change port in config/database.yml to your Postgresql server port, and host to wherever your Postgresql server is running
 
-* Configuration
+3) Clone the repo and run a "bundle install"
 
-* Database creation
+4) Create accounts to get API keys for the various dependencies
+  a. Create a Cloudinary account - https://cloudinary.com/ and note the public and private keys
+  b. Create reCAPTCHA keys, registered under localhost or whatever domain you're running your Rails server on - https://www.google.com/recaptcha/admin
 
-* Database initialization
+4) Run "bundle exec figaro install" so API keys can be passed in as env vars
 
-* How to run the test suite
+5) In config/application.yml, create and populate the following vars with the relevant keys, as well as your Postgres user password:
 
-* Services (job queues, cache servers, search engines, etc.)
+  postgres_password: ""
 
-* Deployment instructions
+  cloudinary_api_key: ""
+  cloudinary_api_secret: ""
 
-* ...
+  recaptcha_site_key_dev: "
+  recpatcha_secret_key_dev: ""
+
+  recaptcha_site_key_prod: ""
+  recaptcha_secret_key_prod: ""
+
+6) Create and migrate the database:
+  a. "rails db:create"
+  b. "rails db:migrate"
+  c. OPTIONAL: "rails db:seed" (NOTE: Windows users may need to uninstall bcrypt-3.1.11-x86-mingw32)
