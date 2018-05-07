@@ -77,3 +77,6 @@ gem "rolify", "~> 5.2"
 
 # Added at 2018-05-07 11:58:50 +1000 by chris1:
 gem "geocoder", "~> 1.4"
+
+# Added at 2018-05-07 13:49:04 +1000 by chris1:
+gem "gmaps4rails", "~> 2.1"

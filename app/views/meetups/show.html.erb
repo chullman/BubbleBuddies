@@ -35,6 +35,11 @@
   <%= @meetup.country %>
 </p>
 
+  <div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+
 <p>
   <strong>Is boat required:</strong>
   <%= @meetup.is_boat_required %>
@@ -67,3 +72,23 @@
 
 <%= link_to 'Edit', edit_meetup_path(@meetup) %> |
 <%= link_to 'Back', meetups_path %>
+
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers([
+    {
+      "lat": <%= @meetup.latitude %>,
+      "lng": <%= @meetup.longitude %>,
+      "picture": {
+        "url": "http://res.cloudinary.com/chullman/image/upload/v1525666850/map_marker.png",
+        "width":  32,
+        "height": 32
+      },
+      "infowindow": "You're meetup location @ <%=@meetup.full_street_address%>"
+    }
+  ]);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
+</script>
