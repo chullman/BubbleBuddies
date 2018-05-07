@@ -16,8 +16,12 @@ Assuming you have a Rails environment up and running:
 3) Clone the repo and run a `bundle install`
 
 4) Create accounts to get API keys for the various dependencies
+
   a. Create a Cloudinary account - https://cloudinary.com/ and note the public and private keys
+  
   b. Create reCAPTCHA keys, registered under localhost or whatever domain you're running your Rails server on - https://www.google.com/recaptcha/admin
+  
+  c. Get a API key for Google Maps
 
 4) Run `bundle exec figaro install` so API keys can be passed in as env vars
 
@@ -33,6 +37,8 @@ Assuming you have a Rails environment up and running:
 
   recaptcha_site_key_prod: ""
   recaptcha_secret_key_prod: ""
+  
+  google_api_key: ""
   ```
 
 6) Create and migrate the database:
