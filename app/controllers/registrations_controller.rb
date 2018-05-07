@@ -8,6 +8,8 @@ class RegistrationsController < Devise::RegistrationsController
       
       if (params[:user][:image]) != nil
         resource.image = (params[:user][:image]).open
+      else
+        resource.image = Rails.root.join('app', 'assets', 'images', 'default_profile_pic.png').open
       end
   
       resource.is_disabled = false

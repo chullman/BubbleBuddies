@@ -13,6 +13,10 @@ class UsersController < ApplicationController
     @diver.certagency_id = params[:diver][:certagency_id]
     @diver.qualification_id = params[:diver][:qualification_id]
 
+    if params[:diver][:total_dives] == nil || params[:diver][:total_dives] == ''
+      @diver.total_dives = 0
+    end
+
     if Diver.where(user_id: current_user.id).first != nil
       
       respond_to do |format|
