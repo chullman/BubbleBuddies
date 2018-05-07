@@ -60,17 +60,21 @@
   <%= @meetup.date %>
 </p>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @meetup.latitude %>
-</p>
+<% is_joined = false%>
+<% @meetup.meetupmembers.each do |member| %>
+  <% if current_user.id == member.user_id %>
+    <% is_joined = true %>
+    <% if member.can_edit == true %>
+      <%= link_to 'Edit', edit_meetup_path(@meetup) %>
+    <% end %>
+  <% end  %>
+<% end %>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @meetup.longitude %>
-</p>
+<% if !(is_joined) %>
+  <%= link_to 'Would you like to join this meetup?', join_meetup_path(@meetup.id), method: :post %>
+<% end %>
 
-<%= link_to 'Edit', edit_meetup_path(@meetup) %> |
+
 <%= link_to 'Back', meetups_path %>
 
 <script type="text/javascript">

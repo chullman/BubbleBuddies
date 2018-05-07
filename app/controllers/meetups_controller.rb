@@ -10,6 +10,7 @@ class MeetupsController < ApplicationController
   # GET /meetups/1
   # GET /meetups/1.json
   def show
+    
   end
 
   # GET /meetups/new
@@ -44,15 +45,43 @@ class MeetupsController < ApplicationController
   # PATCH/PUT /meetups/1
   # PATCH/PUT /meetups/1.json
   def update
-    respond_to do |format|
-      if @meetup.update(meetup_params)
-        format.html { redirect_to @meetup, notice: 'Meetup was successfully updated.' }
-        format.json { render :show, status: :ok, location: @meetup }
+
+    @meetup.meetupmembers.each do |member|
+      if (member.user_id == current_user.id) && (member.can_edit == true)
+        respond_to do |format|
+          if @meetup.update(meetup_params)
+            format.html { redirect_to @meetup, notice: 'Meetup was successfully updated.' }
+            format.json { render :show, status: :ok, location: @meetup }
+          else
+            format.html { render :edit }
+            format.json { render json: @meetup.errors, status: :unprocessable_entity }
+          end
+        end
       else
-        format.html { render :edit }
-        format.json { render json: @meetup.errors, status: :unprocessable_entity }
+        respond_to do |format|
+          format.html { redirect_to @meetup, notice: 'You do not have permission to edit this meetup' }
+        end
       end
     end
+
+
+  end
+
+  def join_meetup
+    if Meetupmember.where("meetup_id = ? and user_id = ?", params[:id], current_user.id).first != nil
+      respond_to do |format|
+        format.html { redirect_to meetups_url, notice: 'You are already already a member of this meetup' }
+        format.json { head :no_content }
+      end
+    else
+      Meetupmember.create({meetup_id: params[:id], user_id: current_user.id, is_owner: false, can_edit: false})
+      respond_to do |format|
+        format.html { redirect_to meetup_path(params[:id]), notice: 'Success! You are now attending this meetup!' }
+        format.json { head :no_content }
+      end
+    end
+    
+
   end
 
   # DELETE /meetups/1

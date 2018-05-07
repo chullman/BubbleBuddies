@@ -1,12 +1,17 @@
 <h1> BubbleBuddies </h1>
 
 <% if user_signed_in? %>
+
+  <% if @registered_diver != nil || @registered_instructor != nil %>
+    <%= link_to "View existing meetups", meetups_path %>
+  <% end %>
+
   <% if @registered_diver == nil  %>
     <%= link_to "I'm a recreational diver", divers_reg_path %>
   <% elsif @registered_diver != nil  %>
     <%= link_to "create a meetup as a diver looking for buddies or an instructor", new_meetup_with_type_path("diver") %>
   <% end %>
-  
+
   <% if @registered_instructor == nil %>
     <%= link_to "I'm a dive instructor", instructors_reg_path %>
   <% elsif @registered_instructor != nil %>
