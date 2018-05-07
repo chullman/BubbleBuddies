@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   post 'meetups/join_meetup/:id', to: 'meetups#join_meetup', as: 'join_meetup'
   resources :meetups
 
+  post 'comments/add_comment/:id', to: 'comments#add_comment', as: 'add_comment'
+  resources :comments, defaults: { format: 'json' }
+
   get 'users/new_diver', to: 'users#new_diver', as: 'divers_reg'
   post 'users/register_diver', to: 'users#register_diver', as: 'register_diver'
 

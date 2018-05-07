@@ -10,7 +10,8 @@ class MeetupsController < ApplicationController
   # GET /meetups/1
   # GET /meetups/1.json
   def show
-    
+    @meetup = Meetup.find(params[:id])
+    @comment = Comment.new
   end
 
   # GET /meetups/new

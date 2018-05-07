@@ -74,6 +74,25 @@
   <%= link_to 'Would you like to join this meetup?', join_meetup_path(@meetup.id), method: :post %>
 <% end %>
 
+<h2>Comments:</h2>
+<% @meetup.comments.each do |comment| %>
+  <div>
+    <h3><%= comment.user.first_name %> <%= comment.user.last_name %></h3>
+    <p><%=comment.created_at %></p>
+    <p><%= comment.content %></p>
+  </div>
+<% end %>
+
+<% if is_joined == true %>
+  <%= form_for @comment, url: add_comment_path(@meetup.id), :method => :post do |f| %>
+    <div class="field">
+      <%= f.label :content %>
+      <%= f.text_field :content, id: :content %>
+    </div>
+    <%= f.submit "Add Comment" %>
+  <% end %>
+<% end %>
+
 
 <%= link_to 'Back', meetups_path %>
 

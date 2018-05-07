@@ -1,6 +1,6 @@
-class CreateMeetupComments < ActiveRecord::Migration[5.2]
+class CreateMeetupcomments < ActiveRecord::Migration[5.2]
   def change
-    create_table :meetup_comments do |t|
+    create_table :meetupcomments do |t|
       t.references :meetup, foreign_key: true
       t.references :comment, foreign_key: true
 

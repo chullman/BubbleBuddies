@@ -71,13 +71,13 @@ ActiveRecord::Schema.define(version: 17) do
     t.index ["user_id"], name: "index_instructors_on_user_id"
   end
 
-  create_table "meetup_comments", force: :cascade do |t|
+  create_table "meetupcomments", force: :cascade do |t|
     t.bigint "meetup_id"
     t.bigint "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_meetup_comments_on_comment_id"
-    t.index ["meetup_id"], name: "index_meetup_comments_on_meetup_id"
+    t.index ["comment_id"], name: "index_meetupcomments_on_comment_id"
+    t.index ["meetup_id"], name: "index_meetupcomments_on_meetup_id"
   end
 
   create_table "meetupmembers", force: :cascade do |t|
@@ -172,8 +172,8 @@ ActiveRecord::Schema.define(version: 17) do
   add_foreign_key "divers", "users"
   add_foreign_key "instructors", "certagencies"
   add_foreign_key "instructors", "users"
-  add_foreign_key "meetup_comments", "comments"
-  add_foreign_key "meetup_comments", "meetups"
+  add_foreign_key "meetupcomments", "comments"
+  add_foreign_key "meetupcomments", "meetups"
   add_foreign_key "meetupmembers", "meetups"
   add_foreign_key "meetupmembers", "users"
   add_foreign_key "skippers", "users"

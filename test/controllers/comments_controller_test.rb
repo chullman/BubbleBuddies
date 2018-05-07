@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MeetupCommentTest < ActiveSupport::TestCase
+class CommentsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
