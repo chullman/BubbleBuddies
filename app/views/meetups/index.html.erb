@@ -39,8 +39,13 @@
         <td><%= meetup.latitude %></td>
         <td><%= meetup.longitude %></td>
         <td><%= link_to 'Show', meetup %></td>
-        <td><%= link_to 'Edit', edit_meetup_path(meetup) %></td>
-        <td><%= link_to 'Destroy', meetup, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if meetup.meetupmembers.each do |meetupmember| %>
+          <% if (current_user.id == meetupmember.user_id) && (meetupmember.can_edit == true) %>
+            <td><%= link_to 'Edit', edit_meetup_path(meetup) %></td>
+            <td><%= link_to 'Destroy', meetup, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+          <% end %>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -17,22 +17,22 @@
 
 <p>
   <strong>Street address:</strong>
-  <%= @meetup.street_address %>
+  <%= @meetup.street_address.titleize %>
 </p>
 
 <p>
   <strong>City:</strong>
-  <%= @meetup.city %>
+  <%= @meetup.city.titleize %>
 </p>
 
 <p>
   <strong>State:</strong>
-  <%= @meetup.state %>
+  <%= @meetup.state.upcase %>
 </p>
 
 <p>
   <strong>Country:</strong>
-  <%= @meetup.country %>
+  <%= @meetup.country.titleize %>
 </p>
 
   <div style='width: 800px;'>
@@ -75,7 +75,15 @@
 
 <script type="text/javascript">
 handler = Gmaps.build('Google');
-handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+handler.buildMap({
+   provider: {
+
+   }, 
+   internal: {
+     id: 'map'
+    }
+  },
+  function(){
   markers = handler.addMarkers([
     {
       "lat": <%= @meetup.latitude %>,

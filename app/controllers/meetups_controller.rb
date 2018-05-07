@@ -26,8 +26,12 @@ class MeetupsController < ApplicationController
   def create
     @meetup = Meetup.new(meetup_params)
 
+
     respond_to do |format|
       if @meetup.save
+
+        Meetupmember.create({meetup_id: @meetup.id, user_id: current_user.id, is_owner: true, can_edit: true})
+
         format.html { redirect_to @meetup, notice: 'Meetup was successfully created.' }
         format.json { render :show, status: :created, location: @meetup }
       else
@@ -54,11 +58,30 @@ class MeetupsController < ApplicationController
   # DELETE /meetups/1
   # DELETE /meetups/1.json
   def destroy
-    @meetup.destroy
-    respond_to do |format|
-      format.html { redirect_to meetups_url, notice: 'Meetup was successfully destroyed.' }
-      format.json { head :no_content }
+
+    if user_signed_in?
+      
+      @meetupmember = Meetupmember.where("meetup_id = ? and user_id = ? and can_edit = ?", params[:id], current_user.id, true).first
+      if @meetupmember != nil
+
+        @members_of_meetup = Meetupmember.where(meetup_id: params[:id])
+        @members_of_meetup.each do |meetup|
+          meetup.destroy
+        end
+
+        @meetup.destroy
+        respond_to do |format|
+          format.html { redirect_to meetups_url, notice: 'Meetup was successfully destroyed.' }
+          format.json { head :no_content }
+        end
+      else
+        respond_to do |format|
+          format.html { redirect_to meetups_url, notice: 'You are not authorised to delete this meetup' }
+          format.json { head :no_content }
+        end
+      end
     end
+
   end
 
   private
