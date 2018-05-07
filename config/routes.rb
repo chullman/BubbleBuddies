@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  
+  resources :meetups
+  get 'meetups/new/:type', to: 'meetups#new', as: 'new_meetup_with_type'
+
+
   get 'users/new_diver', to: 'users#new_diver', as: 'divers_reg'
   post 'users/register_diver', to: 'users#register_diver', as: 'register_diver'
 

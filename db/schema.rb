@@ -95,11 +95,16 @@ ActiveRecord::Schema.define(version: 17) do
     t.string "name"
     t.text "description"
     t.boolean "is_commercial_trip"
-    t.string "location"
+    t.string "street_address"
+    t.string "city"
+    t.string "state"
+    t.string "country"
     t.boolean "is_boat_required"
     t.decimal "price"
     t.integer "member_limit"
     t.datetime "date"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

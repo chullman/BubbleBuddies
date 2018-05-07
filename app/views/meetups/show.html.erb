@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @meetup.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @meetup.description %>
+</p>
+
+<p>
+  <strong>Is commercial trip:</strong>
+  <%= @meetup.is_commercial_trip %>
+</p>
+
+<p>
+  <strong>Street address:</strong>
+  <%= @meetup.street_address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @meetup.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @meetup.state %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @meetup.country %>
+</p>
+
+<p>
+  <strong>Is boat required:</strong>
+  <%= @meetup.is_boat_required %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @meetup.price %>
+</p>
+
+<p>
+  <strong>Member limit:</strong>
+  <%= @meetup.member_limit %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @meetup.date %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @meetup.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @meetup.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_meetup_path(@meetup) %> |
+<%= link_to 'Back', meetups_path %>

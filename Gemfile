@@ -74,3 +74,6 @@ gem "recaptcha", require: "recaptcha/rails"
 
 # Added at 2018-05-04 13:41:41 +1000 by ChrisBook:
 gem "rolify", "~> 5.2"
+
+# Added at 2018-05-07 11:58:50 +1000 by chris1:
+gem "geocoder", "~> 1.4"
