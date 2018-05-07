@@ -1,6 +1,7 @@
 class Meetup < ApplicationRecord
-  belongs_to :comment
+  has_many :meetupcomments
+  has_many :comments, through: :meetupcomments
 
   has_many :meetupmembers
-  has_many :users, though: :meetupmembers
+  has_many :users, through: :meetupmembers
 end

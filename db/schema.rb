@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 16) do
+ActiveRecord::Schema.define(version: 17) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,15 @@ ActiveRecord::Schema.define(version: 16) do
     t.index ["user_id"], name: "index_instructors_on_user_id"
   end
 
+  create_table "meetup_comments", force: :cascade do |t|
+    t.bigint "meetup_id"
+    t.bigint "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_meetup_comments_on_comment_id"
+    t.index ["meetup_id"], name: "index_meetup_comments_on_meetup_id"
+  end
+
   create_table "meetupmembers", force: :cascade do |t|
     t.bigint "meetup_id"
     t.bigint "user_id"
@@ -89,12 +98,10 @@ ActiveRecord::Schema.define(version: 16) do
     t.string "location"
     t.boolean "is_boat_required"
     t.decimal "price"
-    t.bigint "comment_id"
     t.integer "member_limit"
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_meetups_on_comment_id"
   end
 
   create_table "qualifications", force: :cascade do |t|
@@ -160,8 +167,9 @@ ActiveRecord::Schema.define(version: 16) do
   add_foreign_key "divers", "users"
   add_foreign_key "instructors", "certagencies"
   add_foreign_key "instructors", "users"
+  add_foreign_key "meetup_comments", "comments"
+  add_foreign_key "meetup_comments", "meetups"
   add_foreign_key "meetupmembers", "meetups"
   add_foreign_key "meetupmembers", "users"
-  add_foreign_key "meetups", "comments"
   add_foreign_key "skippers", "users"
 end

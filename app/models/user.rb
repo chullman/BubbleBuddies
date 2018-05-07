@@ -13,7 +13,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :roles
 
   has_many :meetupmembers
-  has_many :meetups, though: :meetupmembers
+  has_many :meetups, through: :meetupmembers
   has_one :instructor
   has_one :skipper
   has_one :diver
