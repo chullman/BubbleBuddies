@@ -2,6 +2,7 @@ class MeetupsController < ApplicationController
   before_action :set_meetup, only: [:show, :edit, :update, :destroy]
 
   helper_method :is_instructor?
+  helper_method :is_registered_as_diver_or_instructor?
 
   # GET /meetups
   # GET /meetups.json
@@ -165,6 +166,16 @@ class MeetupsController < ApplicationController
     return false
   end
 
+  def is_registered_as_diver_or_instructor?
+    diver = Diver.where("user_id = ?", current_user.id).first
+    instructor = Instructor.where("user_id = ?", current_user.id).first
+
+    if diver == nil && instructor == nil
+      return false
+    end 
+    return true
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_meetup
@@ -183,15 +194,7 @@ class MeetupsController < ApplicationController
       return true
     end
 
-    def is_registered_as_diver_or_instructor?
-      diver = Diver.where("user_id = ?", current_user.id).first
-      instructor = Instructor.where("user_id = ?", current_user.id).first
 
-      if diver == nil && instructor == nil
-        return false
-      end 
-      return true
-    end
 
   
 end

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  
+
+  post 'charges/create/:id', to: 'charges#create', as: 'charges_with_meetup_id'
+  get 'charges/confirmation/:id', to: 'charges#confirmation', as: 'charges_confirmation'
+  resources :charges, only: :new
+
   get 'meetups/new/:type', to: 'meetups#new', as: 'new_meetup_with_type'
   post 'meetups/join_meetup/:id', to: 'meetups#join_meetup', as: 'join_meetup'
   post 'meetups/create/:type', to: 'meetups#create', as: 'create_meetup_with_type'

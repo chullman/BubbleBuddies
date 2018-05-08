@@ -23,6 +23,8 @@ Assuming you have a Rails environment up and running:
   
   c. Get a API key for Google Maps
 
+  d. Create a Stripe account and grab API keys for it
+
 4) Run `bundle exec figaro install` so API keys can be passed in as env vars
 
 5) In config/application.yml, create and populate the following vars with the relevant keys, as well as your Postgres user password:
@@ -39,6 +41,9 @@ Assuming you have a Rails environment up and running:
   recaptcha_secret_key_prod: ""
   
   google_api_key: ""
+
+  stripe_public_key: ""
+  stripe_private_key: ""
   ```
 
 6) Create and migrate the database:

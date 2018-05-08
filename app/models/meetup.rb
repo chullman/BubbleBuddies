@@ -17,4 +17,8 @@ class Meetup < ApplicationRecord
     attrs = %w(street_address city state country)
     attrs.any?{|a| send "#{a}_changed?"}
   end
+
+  def convert_price_to_cents(price)
+    self.price * 100
+  end
 end
