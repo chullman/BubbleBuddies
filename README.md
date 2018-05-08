@@ -17,17 +17,19 @@ Assuming you have a Rails environment up and running:
 
 4) Create accounts to get API keys for the various dependencies
 
-  a. Create a Cloudinary account - https://cloudinary.com/ and note the public and private keys
+    a. Create a Cloudinary account - https://cloudinary.com/ and note the public and private keys
   
-  b. Create reCAPTCHA keys, registered under localhost or whatever domain you're running your Rails server on - https://www.google.com/recaptcha/admin
+    b. Create and note reCAPTCHA keys, registered under localhost or whatever domain you're running your Rails server on - https://www.google.com/recaptcha/admin
   
-  c. Get a API key for Google Maps
+    c. Get a API key for Google Maps
 
-  d. Create a Stripe account and grab API keys for it
+    d. Create a Stripe account and grab API keys for it
+    
+    e. If deploying into a development environment, create a Gmail account and set it to allow "less secure apps" - https://myaccount.google.com/lesssecureapps
 
-4) Run `bundle exec figaro install` so API keys can be passed in as env vars
+5) Run `bundle exec figaro install` so API keys can be passed in as env vars
 
-5) In config/application.yml, create and populate the following vars with the relevant keys, as well as your Postgres user password:
+6) In config/application.yml, create and populate the following vars with the relevant keys, usernames and passwords from Step 4, including your Postgres user password:
   ```
   postgres_password: ""
 
@@ -44,9 +46,12 @@ Assuming you have a Rails environment up and running:
 
   stripe_public_key: ""
   stripe_private_key: ""
+  
+  gmail_username: ""
+  gmail_password: ""
   ```
 
-6) Create and migrate the database:
+7) Create and migrate the database:
   a. `rails db:create`
   b. `rails db:migrate`
   c. OPTIONAL: `rails db:seed` (NOTE: Windows users may need to uninstall bcrypt-3.1.11-x86-mingw32)
