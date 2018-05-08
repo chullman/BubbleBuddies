@@ -11,6 +11,7 @@ Role.create name: :disabled
 Role.create name: :normal
 
 user = User.new
+user.skip_confirmation!
 user.email = 'admin@admin.com'
 user.password = 'admin'
 user.first_name = 'admin'
@@ -23,6 +24,7 @@ user.image = Rails.root.join('app', 'assets', 'images', 'admin-diver.jpg').open
 user.save!
 
 user = User.new
+user.skip_confirmation!
 user.email = 'test@test.com'
 user.password = 'test'
 user.first_name = 'test'
