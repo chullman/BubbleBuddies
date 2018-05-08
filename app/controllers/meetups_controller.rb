@@ -1,10 +1,15 @@
 class MeetupsController < ApplicationController
   before_action :set_meetup, only: [:show, :edit, :update, :destroy]
 
+  helper_method :is_instructor?
+
   # GET /meetups
   # GET /meetups.json
   def index
     @meetups = Meetup.all
+
+    @registered_diver = Diver.where(user_id: current_user.id).first
+    @registered_instructor = Instructor.where(user_id: current_user.id).first
   end
 
   # GET /meetups/1
@@ -17,6 +22,12 @@ class MeetupsController < ApplicationController
   # GET /meetups/new
   def new
     @meetup = Meetup.new
+    if !(is_valid_user_type?)
+      respond_to do |format|
+        format.html { redirect_to meetups_path, notice: 'You cannot create a meetup of that user type' }
+      end
+    
+    end
   end
 
   # GET /meetups/1/edit
@@ -26,21 +37,34 @@ class MeetupsController < ApplicationController
   # POST /meetups
   # POST /meetups.json
   def create
+
     @meetup = Meetup.new(meetup_params)
 
-
-    respond_to do |format|
-      if @meetup.save
-
-        Meetupmember.create({meetup_id: @meetup.id, user_id: current_user.id, is_owner: true, can_edit: true})
-
-        format.html { redirect_to @meetup, notice: 'Meetup was successfully created.' }
-        format.json { render :show, status: :created, location: @meetup }
-      else
-        format.html { render :new }
-        format.json { render json: @meetup.errors, status: :unprocessable_entity }
+    has_errored = false
+    if is_diver?
+      @meetup.price = 0
+    elsif params[:meetup][:price] == nil || params[:meetup][:price] == ''
+      respond_to do |format|
+        has_errored = true
+        format.html { redirect_to new_meetup_with_type_path(params[:type]), notice: 'Please specify how much you want to charge for the course' }
       end
     end
+
+    if !(has_errored)
+      respond_to do |format|
+        if @meetup.save
+
+          Meetupmember.create({meetup_id: @meetup.id, user_id: current_user.id, is_owner: true, can_edit: true})
+
+          format.html { redirect_to meetup_path(@meetup.id), notice: 'Meetup was successfully created.' }
+          format.json { render :show, status: :created, location: @meetup }
+        else
+          format.html { render :new }
+          format.json { render json: @meetup.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+
   end
 
   # PATCH/PUT /meetups/1
@@ -69,18 +93,30 @@ class MeetupsController < ApplicationController
   end
 
   def join_meetup
-    if Meetupmember.where("meetup_id = ? and user_id = ?", params[:id], current_user.id).first != nil
+
+    if !(is_registered_as_diver_or_instructor?)
       respond_to do |format|
-        format.html { redirect_to meetups_url, notice: 'You are already already a member of this meetup' }
-        format.json { head :no_content }
+        format.html { redirect_to meetups_path, notice: 'You must register yourself as a diver or instructor before joining' }
       end
     else
-      Meetupmember.create({meetup_id: params[:id], user_id: current_user.id, is_owner: false, can_edit: false})
-      respond_to do |format|
-        format.html { redirect_to meetup_path(params[:id]), notice: 'Success! You are now attending this meetup!' }
-        format.json { head :no_content }
+      if Meetupmember.where("meetup_id = ? and user_id = ?", params[:id], current_user.id).first != nil
+        respond_to do |format|
+          format.html { redirect_to meetups_url, notice: 'You are already already a member of this meetup' }
+          format.json { head :no_content }
+        end
+      else
+
+        #check for payment here
+
+        Meetupmember.create({meetup_id: params[:id], user_id: current_user.id, is_owner: false, can_edit: false})
+        respond_to do |format|
+          format.html { redirect_to meetup_path(params[:id]), notice: 'Success! You are now attending this meetup!' }
+          format.json { head :no_content }
+        end
       end
     end
+
+
     
 
   end
@@ -114,6 +150,21 @@ class MeetupsController < ApplicationController
 
   end
 
+  
+  def is_diver?
+    if params[:type] == "diver"
+      return true
+    end
+    return false
+  end
+
+  def is_instructor?
+    if params[:type] == "instructor"
+      return true
+    end
+    return false
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_meetup
@@ -124,4 +175,23 @@ class MeetupsController < ApplicationController
     def meetup_params
       params.require(:meetup).permit(:name, :description, :is_commercial_trip, :street_address, :city, :state, :country, :is_boat_required, :price, :member_limit, :date, :latitude, :longitude)
     end
+
+    def is_valid_user_type?
+      if params[:type] != "diver" && params[:type] != "instructor"
+        return false
+      end
+      return true
+    end
+
+    def is_registered_as_diver_or_instructor?
+      diver = Diver.where("user_id = ?", current_user.id).first
+      instructor = Instructor.where("user_id = ?", current_user.id).first
+
+      if diver == nil && instructor == nil
+        return false
+      end 
+      return true
+    end
+
+  
 end

@@ -2,9 +2,8 @@
 
 <% if user_signed_in? %>
 
-  <% if @registered_diver != nil || @registered_instructor != nil %>
-    <%= link_to "View existing meetups", meetups_path %>
-  <% end %>
+  
+  <%= link_to "View existing meetups", meetups_path %>
 
   <% if @registered_diver == nil  %>
     <%= link_to "I'm a recreational diver", divers_reg_path %>

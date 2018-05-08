@@ -1,4 +1,4 @@
-<%= form_with(model: meetup, local: true) do |form| %>
+<%= form_with(model: meetup, local: true, url: create_meetup_with_type_path(params[:type])) do |form| %>
   <% if meetup.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(meetup.errors.count, "error") %> prohibited this meetup from being saved:</h2>
@@ -51,10 +51,12 @@
     <%= form.check_box :is_boat_required %>
   </div>
 
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
-  </div>
+  <% if is_instructor?  %>
+    <div class="field">
+      <%= form.label :price %>
+      <%= form.text_field :price %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= form.label :member_limit %>

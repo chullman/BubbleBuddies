@@ -80,3 +80,6 @@ gem "geocoder", "~> 1.4"
 
 # Added at 2018-05-07 13:49:04 +1000 by chris1:
 gem "gmaps4rails", "~> 2.1"
+
+# Added at 2018-05-08 10:39:04 +1000 by ChrisBook:
+gem "stripe", "~> 3.13"
