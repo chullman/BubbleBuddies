@@ -52,6 +52,9 @@ Assuming you have a Rails environment up and running:
   ```
 
 7) Create and migrate the database:
-  a. `rails db:create`
-  b. `rails db:migrate`
-  c. OPTIONAL: `rails db:seed` (NOTE: Windows users may need to uninstall bcrypt-3.1.11-x86-mingw32)
+
+    a. `rails db:create`
+  
+    b. `rails db:migrate`
+  
+    c. OPTIONAL: `rails db:seed` (NOTE: Windows users may need to uninstall bcrypt-3.1.11-x86-mingw32)
