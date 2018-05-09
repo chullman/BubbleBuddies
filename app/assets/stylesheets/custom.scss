@@ -187,7 +187,7 @@ a
 }
 
 .admin-heading {
-  @include default_h1
+  @include default_h1;
 }
 
 .default-scaffold-links {
@@ -196,7 +196,7 @@ a
 }
 
 .meetups-heading {
-  @include default_h1
+  @include default_h1;
 }
 
 .no-meetups-error {
@@ -215,7 +215,7 @@ a
 }
 
 .show-meetup-heading {
-  @include default_h1
+  @include default_h1;
 }
 
 .show-meetup-name {
@@ -225,4 +225,22 @@ a
 .hero-foot a {
   display: inline;
   float: none;
+}
+
+.align-filter {
+  margin-top: 15px;
+}
+
+.user-type-heading {
+  @include default_h1;
+}
+
+.show-meetup-background-wrapper {
+  background-color: $cartoon_blue;
+}
+.show-meetup-content-wrapper {
+  
+  width: 50%;
+  margin-left: 10%;
+  margin-right: auto;
 }

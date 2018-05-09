@@ -8,13 +8,17 @@
 
   <form>
     <div class="field">
-      <label for="Meetup Type">Meetup Type:</label>
-      <div class="control">
-        <input type="text" name="meetup_type">
+      <p class="bold"><label for="Meetup Type">Filter by Meetup Type:</label></p>
+      <div>
+         <select name="meetup_type" class="align-filter">
+          <option value="diver">Meetups by other dive buddies</option>
+          <option value="instructor">Meetups by instructors (for courses)</option>
+        </select>
+            <input type="submit" value="Filter" class="button is-primary">
+    <%= link_to 'Clear Filters', meetups_path, class: "button is-info" %>
       </div>
     </div>
-    <input type="submit" value="Filter" class="btn btn-default">
-    <%= link_to 'Clear Filters', meetups_path, class: "button is-primary" %>
+
   </form>
 
 

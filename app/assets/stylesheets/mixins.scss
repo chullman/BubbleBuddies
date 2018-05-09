@@ -31,7 +31,7 @@
 
 @mixin default_h1 {
   font-family: $font_patua;
-  color: white;
+  color: $light_blue;
   letter-spacing: 2px;
   padding: 10px 10px 10px 10px;
   -webkit-text-stroke-width: 1px;
