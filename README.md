@@ -58,3 +58,10 @@ Assuming you have a Rails environment up and running:
     b. `rails db:migrate`
   
     c. OPTIONAL: `rails db:seed` (NOTE: Windows users may need to uninstall bcrypt-3.1.11-x86-mingw32)
+
+### Sample Data
+
+If you ran `rails db:seed` above, this will include a couple of test users:
+
+a. Admin user - email: admin@admin.com, password: admin
+b. Normal user - email: test@test.com, password: test
