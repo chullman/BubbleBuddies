@@ -1,0 +1,98 @@
+
+.navbar-item img {
+  max-height: 600px;
+  max-width: 400px;
+  width: auto;
+  height: auto;
+
+  @include small {
+    max-height: 400px;
+    max-width: 300px;
+  }
+}
+
+.navbar-item {
+  @include nil_top_bottom_padding;
+}
+
+.navbar {
+  background-color: $light_blue;
+}
+
+.navbar-end img {
+  margin-top: auto;
+  margin-bottom: auto;
+  max-width: 100px;
+  max-height: 100px;
+  height: auto;
+  width: auto;
+}
+
+.warning-link {
+  color: $warning_red;
+}
+
+.navbar-item {
+  font-size: 1.25rem;
+}
+
+
+.hero-body {
+  background-image: url("/assets/css/hero_edit.jpg");
+  background-repeat: no-repeat;
+  background-color: $cartoon_blue;
+}
+
+.top-align-text {
+  background-color: $light_blue;
+}
+
+.top-align-text > h1 {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  font-size: 2.5rem;
+}
+.top-align-text > h2 {
+  font-size: 1.5em;
+}
+
+.top-align-text > h1,
+.top-align-text > h2 {
+  font-family: $font_patua;
+  color: white;
+  letter-spacing: 2px;
+  padding: 10px 10px 10px 10px;
+  
+}
+
+.small-margin-top-bottom {
+  @include small_margin_top_bottom;
+}
+
+.cards-container {
+  background-color: $cartoon_blue;
+}
+
+
+.cards .column {
+  height: 200px;
+  margin: 10px;
+  text-align: center;
+  font-size: 2em;
+-webkit-box-shadow: -7px 11px 25px -9px rgba(0,0,0,1);
+-moz-box-shadow: -7px 11px 25px -9px rgba(0,0,0,1);
+box-shadow: -7px 11px 25px -9px rgba(0,0,0,1);
+background-color: $light_blue;
+}
+
+.cards .column p {
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+}
+
+.cards img {
+  max-width: 128px;
+  max-height: 128px;
+  width: auto;
+  height: auto;
+}

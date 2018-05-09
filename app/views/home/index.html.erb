@@ -1,7 +1,45 @@
-<h1> BubbleBuddies </h1>
+<section class="hero is-large is-bold">
+    <div class="hero-body">
+      <div class="container has-text-right">
+        <div class="top-align-text">
+          <h1 class="title">
+            For divers of all levels!
+          </h1>
+          <h2 class="subtitle">
+            A friendly meetup platform for divers of all levels to find dive buddies, and for dive instructors to offer their services!
+          </h2>
+        </div>
+      </div>
+      <br />
+      <div class="container has-text-right">
+        <% if !(user_signed_in?) %>
+          <a href="#cards" class="button is-large is-info small-margin-top-bottom">Please register an account!</a>
+        
+        <% elsif @registered_diver == nil && @registered_instructor == nil %>
+          <a class="button is-large is-info small-margin-top-bottom">Are you a diver or an instructor?</a>
+        <% end %>
+      </div>
+    </div>
+</section>
+
+<section class="cards-container">
+  <div class="section cards" id="cards">
+    <div class="container">
+      <div class="columns is-multiline">
+        <div class="column xpro2 is-quarter">
+          <p>Click to register as a DIVER!</p>
+          <img src="../assets/diver-icon.png" alt="Diver Icon">
+        </div>
+        <div class="column xpro2 is-quarter">
+          <p>Click to register as an INSTRUCTOR!</p>
+          <img src="../assets/instructor-icon.png" alt="Instructor Icon">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <% if user_signed_in? %>
-
   
   <%= link_to "View existing meetups", meetups_path %>
 

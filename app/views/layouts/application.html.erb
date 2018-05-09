@@ -1,29 +1,55 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BubbleBuddies</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script src="//maps.google.com/maps/api/js?key=<%=ENV['google_api_key']%>"></script>
-    <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+    <%= render partial: "/layouts/defaulthead" %>
+
   </head>
 
   <body>
 
-    <% if user_signed_in?%>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-      <%= link_to "Account Settings", edit_user_registration_path %>
-      <% if current_user.has_role? :admin %>
-        <%= link_to 'Admin Settings', admins_path %>
-      <% end %>
-    <% else %>
-      <%= link_to 'Login', new_user_session_path %>
-      <%= link_to 'Register', new_user_registration_path %>
-    <% end %>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="../">
+      <img src="../assets/css/navbar_brand.png" alt="Bubble Buddies Logo">
+    </a>
+
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu" id="navMenu">
+      <div class="navbar-end">
+
+          <img src="../assets/css/bubbles_edit.png" alt="Bubbles Image">
+
+          <%= link_to 'Home', home_index_path, :class => "navbar-item" %>
+
+        <% if user_signed_in?%>
+
+            <%= link_to "Logout", destroy_user_session_path, :class => "navbar-item", method: :delete %>
+
+
+            <%= link_to "Account Settings", edit_user_registration_path, :class => "navbar-item" %>
+
+            <%= link_to "View existing meetups", meetups_path, :class => "navbar-item" %>
+
+          <% if current_user.has_role? :admin %>
+            <%= link_to 'Admin Settings', admins_path, :class => "navbar-item warning-link" %>
+          <% end %>
+        <% else%>
+
+            <%= link_to 'Login', new_user_session_path, :class => "navbar-item" %>
+
+
+            <%= link_to 'Register', new_user_registration_path, :class => "navbar-item" %>
+
+        <% end %>
+      </div>
+  </div>
+</nav>
 
        <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
