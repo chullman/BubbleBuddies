@@ -33,7 +33,7 @@
         <div class="columns is-multiline">
             <div class="column xpro2 is-quarter">
               <p>View EXISTING MEETUPS</p>
-              <img src="../assets/meetup-icon.png" alt="Meetup Icon">
+              <%= image_tag 'meetup-icon.png' %>
               <%= link_to "", meetups_path, :class => "card-wrap" %>
             </div>
         </div>
@@ -47,33 +47,33 @@
         <div class="columns is-multiline">
             <div class="column xpro2 is-quarter">
               <p>View EXISTING MEETUPS</p>
-              <img src="../assets/meetup-icon.png" alt="Meetup Icon">
+              <%= image_tag 'meetup-icon.png' %>
               <%= link_to "", meetups_path, :class => "card-wrap" %>
             </div>
           <% if @registered_diver == nil  %>
             
             <div class="column xpro2 is-quarter">
               <p>Click to register as a DIVER!</p>
-              <img src="../assets/diver-icon.png" alt="Diver Icon">
+              <%= image_tag 'diver-icon.png' %>
               <%= link_to "", divers_reg_path, :class => "card-wrap" %>
             </div>
           <% elsif @registered_diver != nil  %>
             <div class="column xpro2 is-quarter">
               <p>Click to CREATE A MEETUP as a diver looking for buddies or an instructor</p>
-              <img src="../assets/diver-icon.png" alt="Diver Icon">
+              <%= image_tag 'diver-icon.png' %>
               <%= link_to "", new_meetup_with_type_path("diver"), :class => "card-wrap" %>
             </div>
           <% end %>
           <% if @registered_instructor == nil  %>
             <div class="column xpro2 is-quarter">
               <p>Click to register as an INSTRUCTOR!</p>
-              <img src="../assets/instructor-icon.png" alt="Instructor Icon">
+              <%= image_tag 'instructor-icon.png' %>
               <%= link_to "", instructors_reg_path, :class => "card-wrap" %>
             </div>
           <% elsif @registered_instructor != nil  %>
               <div class="column xpro2 is-quarter">
               <p>Click to CREATE A MEETUP as a instructor looking to teach</p>
-              <img src="../assets/instructor-icon.png" alt="Instructor Icon">
+              <%= image_tag 'instructor-icon.png' %>
               <%= link_to "", new_meetup_with_type_path("instructor"), :class => "card-wrap" %>
             </div>
           <% end %>
