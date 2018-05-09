@@ -41,7 +41,10 @@
 
 
 .hero-body {
-  background-image: image-url("hero_edit.jpg");
+  background-image: url("css/hero_edit.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   background-repeat: no-repeat;
   background-color: $cartoon_blue;
   padding-bottom: 0;
