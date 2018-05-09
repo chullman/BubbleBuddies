@@ -10,6 +10,10 @@ class MeetupsController < ApplicationController
   def index
     @meetups = Meetup.all
 
+    filter_params.each do |key, value|
+      @meetups = @meetups.public_send(key, value) if value.present?
+    end
+
     if (user_signed_in?)
       @registered_diver = Diver.where(user_id: current_user.id).first
       @registered_instructor = Instructor.where(user_id: current_user.id).first
@@ -221,6 +225,11 @@ class MeetupsController < ApplicationController
           end
         end
       end
+    end
+
+    def filter_params
+      # slice will elimate anything from the params hash that doesn't include the following
+      params.slice(:meetup_type)
     end
 
 

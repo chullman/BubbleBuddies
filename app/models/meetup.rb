@@ -1,5 +1,7 @@
 class Meetup < ApplicationRecord
 
+  scope :meetup_type, -> (meetup_type) { where("LOWER(meetup_type) like ?", "%#{meetup_type.downcase}%") }
+
   geocoded_by :full_street_address   # can also be an IP address
   after_validation :geocode, :if => :address_changed?     # auto-fetch coordinates
 

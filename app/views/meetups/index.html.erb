@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1 class="meetups-heading">View Existing Meetups</h1>
 
 <% if !(@meetups.any?) %>
@@ -7,6 +5,18 @@
     <h2>No meetups exist yet. Why not be the first to create one! :)</h2>
   </div>
 <% else %>
+
+  <form>
+    <div class="field">
+      <label for="Meetup Type">Meetup Type:</label>
+      <div class="control">
+        <input type="text" name="meetup_type">
+      </div>
+    </div>
+    <input type="submit" value="Filter" class="btn btn-default">
+    <%= link_to 'Clear Filters', meetups_path, class: "button is-primary" %>
+  </form>
+
 
   <table class="table is-striped">
     <thead>
