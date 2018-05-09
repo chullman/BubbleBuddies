@@ -11,7 +11,7 @@
   <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="../">
-      <img src="../assets/css/navbar_brand.png" alt="Bubble Buddies Logo">
+      <img src="../../assets/css/navbar_brand.png" alt="Bubble Buddies Logo">
     </a>
 
     <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
@@ -23,7 +23,7 @@
   <div class="navbar-menu" id="navMenu">
       <div class="navbar-end">
 
-          <img src="../assets/css/bubbles_edit.png" alt="Bubbles Image">
+          <img src="../../assets/css/bubbles_edit.png" alt="Bubbles Image">
 
           <%= link_to 'Home', home_index_path, :class => "navbar-item" %>
 
@@ -55,5 +55,7 @@
        <p class="alert"><%= alert %></p>
 
     <%= yield %>
+
+    <%= render partial: "/layouts/defaultfoot" %>
   </body>
 </html>

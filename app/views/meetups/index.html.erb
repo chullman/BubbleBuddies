@@ -1,69 +1,106 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Meetups</h1>
+<h1 class="meetups-heading">View Existing Meetups</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Is commercial trip</th>
-      <th>Street address</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Country</th>
-      <th>Is boat required</th>
-      <th>Price</th>
-      <th>Member limit</th>
-      <th>Date</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% if !(@meetups.any?) %>
+  <div class="no-meetups-error">
+    <h2>No meetups exist yet. Why not be the first to create one! :)</h2>
+  </div>
+<% else %>
 
-  <tbody>
-    <% @meetups.each do |meetup| %>
+  <table class="table is-striped">
+    <thead>
       <tr>
-        <td><%= meetup.name %></td>
-        <td><%= meetup.description %></td>
-        <td><%= meetup.is_commercial_trip %></td>
-        <td><%= meetup.street_address %></td>
-        <td><%= meetup.city %></td>
-        <td><%= meetup.state %></td>
-        <td><%= meetup.country %></td>
-        <td><%= meetup.is_boat_required %></td>
-        <td><%= meetup.price %></td>
-        <td><%= meetup.member_limit %></td>
-        <td><%= meetup.date %></td>
-        <td><%= meetup.latitude %></td>
-        <td><%= meetup.longitude %></td>
-        <td><%= link_to 'Show', meetup %></td>
-        <% if meetup.meetupmembers.each do |meetupmember| %>
-          <% if (current_user.id == meetupmember.user_id) && (meetupmember.can_edit == true) %>
-            <td><%= link_to 'Edit', edit_meetup_path(meetup) %></td>
-            <td><%= link_to 'Destroy', meetup, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
-          <% end %>
-        <% end %>
+        <th>Title</th>
+        <th>Is this a commercial trip?</th>
+        <th>Meeting Address</th>
+        <th>Meeting City</th>
+        <th>Meeting State</th>
+        <th>Meeting Country</th>
+        <th>Is a boat required?</th>
+        <th>Price</th>
+        <th>Member limit</th>
+        <th>Date</th>
+
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @meetups.each do |meetup| %>
+        <tr>
+          <td class="bold"><%= link_to meetup.name, meetup %></td>
+          <% if meetup.is_commercial_trip %>
+            <td>Yes</td>
+          <% else %>
+            <td>No</td>
+          <% end %>
+          <td><%= meetup.street_address %></td>
+          <td><%= meetup.city %></td>
+          <td><%= meetup.state %></td>
+          <td><%= meetup.country %></td>
+          <td><%= meetup.is_boat_required %></td>
+          <% if meetup.price == 0 %>
+            <td>$0</td>
+          <% else %>
+            <td class="bold">$<%=sprintf('%02.f', meetup.price)%></td>
+          <% end %>
+          <td><%= meetup.member_limit %></td>
+          <td><%= meetup.date %></td>
+          <td><%= link_to 'View Meetup', meetup, :class => "button is-primary" %></td>
+          <% if meetup.meetupmembers.each do |meetupmember| %>
+            <% if (current_user.id == meetupmember.user_id) && (meetupmember.can_edit == true) %>
+              <td><%= link_to 'Edit', edit_meetup_path(meetup), :class => "button is-warning" %></td>
+              <td><%= link_to 'Destroy', meetup, method: :delete, data: { confirm: 'Are you sure you want to delete this meetup?' }, :class => "button is-danger" %></td>
+            <% end %>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% end %>
+
+
 
 <br>
 
-
-<% if @registered_diver == nil  %>
-  <%= link_to "I'm a recreational diver", divers_reg_path %>
-<% elsif @registered_diver != nil  %>
-  <%= link_to "create a meetup as a diver looking for buddies or an instructor", new_meetup_with_type_path("diver") %>
-<% end %>
-
-<% if @registered_instructor == nil %>
-  <%= link_to "I'm a dive instructor", instructors_reg_path %>
-<% elsif @registered_instructor != nil %>
-  <%= link_to "create a meetup as a instructor looking to teach", new_meetup_with_type_path("instructor") %>
+<% if user_signed_in? %>
+  <section class="cards-container">
+    <div class="section cards" id="cards">
+      <div class="container">
+        <div class="columns is-multiline">
+          <% if @registered_diver == nil  %>
+            
+            <div class="column xpro2 is-quarter">
+              <p>Click to register as a DIVER!</p>
+              <img src="../assets/diver-icon.png" alt="Diver Icon">
+              <%= link_to "", divers_reg_path, :class => "card-wrap" %>
+            </div>
+          <% elsif @registered_diver != nil  %>
+            <div class="column xpro2 is-quarter">
+              <p>Click to CREATE A MEETUP as a diver looking for buddies or an instructor</p>
+              <img src="../assets/diver-icon.png" alt="Diver Icon">
+              <%= link_to "", new_meetup_with_type_path("diver"), :class => "card-wrap" %>
+            </div>
+          <% end %>
+          <% if @registered_instructor == nil  %>
+            <div class="column xpro2 is-quarter">
+              <p>Click to register as an INSTRUCTOR!</p>
+              <img src="../assets/instructor-icon.png" alt="Instructor Icon">
+              <%= link_to "", instructors_reg_path, :class => "card-wrap" %>
+            </div>
+          <% elsif @registered_instructor != nil  %>
+              <div class="column xpro2 is-quarter">
+              <p>Click to CREATE A MEETUP as a instructor looking to teach</p>
+              <img src="../assets/instructor-icon.png" alt="Instructor Icon">
+              <%= link_to "", new_meetup_with_type_path("instructor"), :class => "card-wrap" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
 <% end %>
 
 

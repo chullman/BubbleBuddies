@@ -1,3 +1,5 @@
+
+
 <%= form_with(model: meetup, local: true, url: create_meetup_with_type_path(params[:type])) do |form| %>
   <% if meetup.errors.any? %>
     <div id="error_explanation">
@@ -12,63 +14,87 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label :name, :class => "label" %>
+    <div class="control">
     <%= form.text_field :name %>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
+    <%= form.label :description, :class => "label" %>
+    <div class="control">
     <%= form.text_area :description %>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :is_commercial_trip %>
+    <%= form.label :is_commercial_trip, :class => "label" %>
+    <div class="control">
     <%= form.check_box :is_commercial_trip %>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :street_address %>
+    <%= form.label :street_address, :class => "label" %>
+    <div class="control">
     <%= form.text_field :street_address %>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :city %>
+    <%= form.label :city, :class => "label" %>
+    <div class="control">
     <%= form.text_field :city %>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :state %>
+    <%= form.label :state, :class => "label" %>
+    <div class="control">
     <%= form.text_field :state %>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :country %>
+    <%= form.label :country, :class => "label" %>
+    <div class="control">
     <%= form.text_field :country %>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :is_boat_required %>
+    <%= form.label :is_boat_required, :class => "label" %>
+    <div class="control">
     <%= form.check_box :is_boat_required %>
+    </div>
   </div>
 
   <% if is_instructor?  %>
     <div class="field">
-      <%= form.label :price %>
+      <%= form.label :price, :class => "label" %>
+      <div class="control">
       <%= form.text_field :price %>
+      </div>
     </div>
   <% end %>
 
   <div class="field">
-    <%= form.label :member_limit %>
+    <%= form.label :member_limit, :class => "label" %>
+    <div class="control">
     <%= form.number_field :member_limit %>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :date %>
+    <%= form.label :date, :class => "label" %>
+    <div class="control">
     <%= form.datetime_select :date %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Create Meetup", :class => "button is-primary" %>
   </div>
 <% end %>
+
+

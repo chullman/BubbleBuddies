@@ -1,4 +1,6 @@
-<h2>Enable/disable admin access for user</h2>
+<div class="form-background">
+<div class="form-wrapper">
+<h1 class="form-heading">Control access for users</h1>
 
 <% @users.each do |user| %>
 
@@ -24,10 +26,12 @@
             <%= role.name %>
         <% end %>
 
-      <%= f.submit "Change" %>
+      <%= f.submit "Change", data: { confirm: "Are you sure you want to make this change for user: #{user.email}" }, :class => "button is-danger" %>
     <% end %>
 
   <br />
   </p>
 
 <% end %>
+</div>
+</div>

@@ -41,6 +41,7 @@
   background-image: url("/assets/css/hero_edit.jpg");
   background-repeat: no-repeat;
   background-color: $cartoon_blue;
+  padding-bottom: 0;
 }
 
 .top-align-text {
@@ -73,9 +74,14 @@
   background-color: $cartoon_blue;
 }
 
+.columns {
+  display: flex;
+  flex-direction: column;
+}
+
 
 .cards .column {
-  height: 200px;
+  height: 300px;
   margin: 10px;
   text-align: center;
   font-size: 2em;
@@ -92,8 +98,9 @@ position: relative;
 }
 
 .cards img {
-  max-width: 128px;
-  max-height: 128px;
+
+  max-width: 230px;
+  max-height: 230px;
   width: auto;
   height: auto;
 }
@@ -105,4 +112,111 @@ position: relative;
   width: 100%;
   height: 100%;
   display: inline;
+}
+
+.form-heading {
+ @include default-h1
+}
+
+.form-background {
+  width: 100%;
+  position: relative;
+  background-color: $cartoon_blue;
+}
+
+.form-wrapper {
+  width: 300px;
+  display: block;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.devise-shared-links {
+  color: black;
+  font-size: 1.2em;
+}
+
+.field {
+  @include force_horizontal_center;
+}
+
+form .button {
+  margin: 10px;
+}
+
+form .control {
+  @include force_horizontal_center;
+}
+a
+.hero.is-large .hero-body {
+    padding-bottom: 10rem;
+}
+
+.notice {
+  background-color: $notice_green;
+  @include notice_alert_box;
+}
+
+.alert {
+  background-color: $alert_red;
+  @include notice_alert_box;
+}
+
+.admin-background {
+  width: 100%;
+  position: relative;
+  background-color: $cartoon_blue;
+}
+
+.admin-wrapper {
+  width: 300px;
+  display: block;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.admin-heading {
+  @include default_h1
+}
+
+.default-scaffold-links {
+  color: black;
+  font-size: 1.2em;
+}
+
+.meetups-heading {
+  @include default_h1
+}
+
+.no-meetups-error {
+  background-color: $warning_red;
+}
+
+.no-meetups-error {
+  text-align: center;
+  color: black;
+  font-size: 2em;
+}
+
+.bold {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+.show-meetup-heading {
+  @include default_h1
+}
+
+.show-meetup-name {
+  font-size: 2rem;
+}
+
+.hero-foot a {
+  display: inline;
+  float: none;
 }
