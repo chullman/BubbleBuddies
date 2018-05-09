@@ -26,7 +26,21 @@
     </div>
 </section>
 
-<% if user_signed_in? %>
+<% if !(user_signed_in?) %>
+<section class="cards-container">
+    <div class="section cards" id="cards">
+      <div class="container">
+        <div class="columns is-multiline">
+            <div class="column xpro2 is-quarter">
+              <p>View EXISTING MEETUPS</p>
+              <img src="../assets/meetup-icon.png" alt="Meetup Icon">
+              <%= link_to "", meetups_path, :class => "card-wrap" %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<% elsif user_signed_in? %>
   <section class="cards-container">
     <div class="section cards" id="cards">
       <div class="container">

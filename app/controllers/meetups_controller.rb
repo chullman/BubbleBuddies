@@ -1,5 +1,6 @@
 class MeetupsController < ApplicationController
   before_action :set_meetup, only: [:show, :edit, :update, :destroy]
+  before_action :disallow_disabled
 
   helper_method :is_instructor?
   helper_method :is_registered_as_diver_or_instructor?
@@ -9,8 +10,13 @@ class MeetupsController < ApplicationController
   def index
     @meetups = Meetup.all
 
-    @registered_diver = Diver.where(user_id: current_user.id).first
-    @registered_instructor = Instructor.where(user_id: current_user.id).first
+    if (user_signed_in?)
+      @registered_diver = Diver.where(user_id: current_user.id).first
+      @registered_instructor = Instructor.where(user_id: current_user.id).first
+    else
+      @registered_diver = nil
+      @registered_instructor = nil
+    end
   end
 
   # GET /meetups/1
@@ -42,12 +48,25 @@ class MeetupsController < ApplicationController
     @meetup = Meetup.new(meetup_params)
 
     has_errored = false
-    if is_diver?
-      @meetup.price = 0
-    elsif params[:meetup][:price] == nil || params[:meetup][:price] == ''
+    if params[:type] == "diver"
+      @meetup.meetup_type = "diver"
+    elsif params[:type] == "instructor"
+      @meetup.meetup_type = "instructor"
+    else
       respond_to do |format|
         has_errored = true
-        format.html { redirect_to new_meetup_with_type_path(params[:type]), notice: 'Please specify how much you want to charge for the course' }
+        format.html { redirect_to new_meetup_with_type_path(params[:type]), alert: 'Meetup type must be of type diver or instructor' }
+      end
+    end
+
+    if !(has_errored)
+      if is_diver?
+        @meetup.price = 0
+      elsif params[:meetup][:price] == nil || params[:meetup][:price] == ''
+        respond_to do |format|
+          has_errored = true
+          format.html { redirect_to new_meetup_with_type_path(params[:type]), alert: 'Please specify how much you want to charge for the course' }
+        end
       end
     end
 
@@ -192,6 +211,16 @@ class MeetupsController < ApplicationController
         return false
       end
       return true
+    end
+
+    def disallow_disabled
+      if user_signed_in?
+        if current_user.has_role? :disabled
+          respond_to do |format|
+            format.html { redirect_to home_index_path, alert: 'Your account has been disabled' }
+          end
+        end
+      end
     end
 
 

@@ -1,7 +1,7 @@
 class AdminsController < ApplicationController
 
   before_action :restrict_to_admin, only: [:index, :edit_permissions, :update_permissions, :edit_enablement, :update_enablement, :edit_user_deletion, :destroy_user]
-
+  before_action :disallow_disabled
 
   def index
 
@@ -62,6 +62,16 @@ class AdminsController < ApplicationController
       redirect_to root_path
     end
 
+  end
+
+  def disallow_disabled
+    if user_signed_in?
+      if current_user.has_role? :disabled
+        respond_to do |format|
+          format.html { redirect_to new_meetup_with_type_path(params[:type]), alert: 'Your account has been disabled' }
+        end
+      end
+    end
   end
 
 end

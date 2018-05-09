@@ -58,6 +58,7 @@
   <%= @meetup.date %>
 </p>
 
+<% if user_signed_in? %>
 <% is_joined = false%>
 <% @meetup.meetupmembers.each do |member| %>
   <% if current_user.id == member.user_id %>
@@ -93,6 +94,7 @@
   <% end %>
 
 
+<% end %>
 <% end %>
 
 <h2>Comments:</h2>

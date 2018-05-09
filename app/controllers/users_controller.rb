@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :disallow_disabled
+
   def new_diver
     @diver = Diver.new
 
@@ -20,7 +23,7 @@ class UsersController < ApplicationController
     if Diver.where(user_id: current_user.id).first != nil
       
       respond_to do |format|
-        format.html { redirect_to home_index_path, notice: 'You have already registered as a diver' }
+        format.html { redirect_to home_index_path, alert: 'You have already registered as a diver' }
       end
 
     else
@@ -50,7 +53,7 @@ class UsersController < ApplicationController
     if Instructor.where(user_id: current_user.id).first != nil
       
       respond_to do |format|
-        format.html { redirect_to home_index_path, notice: 'You have already registered as an instructor' }
+        format.html { redirect_to home_index_path, alert: 'You have already registered as an instructor' }
       end
 
     else
@@ -64,7 +67,7 @@ class UsersController < ApplicationController
           if Abletoteach.where(instructor_id: current_user.id).first != nil
             respond_to do |format|
               @instructor.destroy
-              format.html { redirect_to home_index_path, notice: 'You have already chosen the courses you are available to teach' }
+              format.html { redirect_to home_index_path, alert: 'You have already chosen the courses you are available to teach' }
             end
           else
               course_to_teach_added = false
@@ -76,7 +79,7 @@ class UsersController < ApplicationController
               end
               if course_to_teach_added == false
                 @instructor.destroy
-                format.html { redirect_to home_index_path, notice: 'You must specify at least one course or speciality that you can teach' }
+                format.html { redirect_to home_index_path, alert: 'You must specify at least one course or speciality that you can teach' }
               else
                 format.html { redirect_to home_index_path, notice: 'Instructor was successfully registered' }
               end                 
@@ -101,6 +104,16 @@ class UsersController < ApplicationController
 
   def instructor_params
     params.require(:instructor).permit(:total_dives, :certagency_id, course_attributes:[:id, :course_name])
+  end
+
+  def disallow_disabled
+    if user_signed_in?
+      if current_user.has_role? :disabled
+        respond_to do |format|
+          format.html { redirect_to home_index_path, alert: 'Your account has been disabled' }
+        end
+      end
+    end
   end
 
 end

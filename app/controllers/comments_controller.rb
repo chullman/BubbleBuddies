@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  before_action :disallow_disabled
+
   def add_comment
     if user_signed_in?
       if Meetupmember.where("meetup_id = ? and user_id = ?", params[:id], current_user.id).first != nil
@@ -15,4 +17,17 @@ class CommentsController < ApplicationController
     end
     
   end
+
+  private
+
+  def disallow_disabled
+    if user_signed_in?
+      if current_user.has_role? :disabled
+        respond_to do |format|
+          format.html { redirect_to home_index_path, alert: 'Your account has been disabled' }
+        end
+      end
+    end
+  end
+
 end
