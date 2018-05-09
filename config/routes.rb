@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'meetups/new/:type', to: 'meetups#new', as: 'new_meetup_with_type'
   post 'meetups/join_meetup/:id', to: 'meetups#join_meetup', as: 'join_meetup'
   post 'meetups/create/:type', to: 'meetups#create', as: 'create_meetup_with_type'
+  patch 'meetups/create/:id', to: 'meetups#update', as: 'patch_meetup_with_type'
   resources :meetups
 
   post 'comments/add_comment/:id', to: 'comments#add_comment', as: 'add_comment'

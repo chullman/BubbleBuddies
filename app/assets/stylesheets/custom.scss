@@ -80,7 +80,7 @@
   background-color: $cartoon_blue;
 }
 
-.columns {
+.columns-for-home {
   display: flex;
   flex-direction: column;
 }
@@ -216,6 +216,7 @@ a
 
 .show-meetup-heading {
   @include default_h1;
+  font-size: 3rem;
 }
 
 .show-meetup-name {
@@ -235,12 +236,30 @@ a
   @include default_h1;
 }
 
-.show-meetup-background-wrapper {
+.custom-background-color {
   background-color: $cartoon_blue;
 }
+
 .show-meetup-content-wrapper {
   
   width: 50%;
   margin-left: 10%;
   margin-right: auto;
+}
+
+.attending-bubbles {
+  width: 20%;
+}
+
+.attending-resize {
+  width: 70%
+}
+
+.card-bottom-margin {
+  margin-bottom: 10px;
+}
+
+.top-margin-offset-sm {
+  padding-top: 20px;
+
 }
