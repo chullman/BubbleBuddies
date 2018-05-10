@@ -98,6 +98,7 @@ Assuming you have a Rails environment up and running:
 If you ran `rails db:seed` above, this will include a couple of test users:
 
 a. Admin user - email: admin@admin.com, password: admin
+
 b. Normal user - email: test@test.com, password: test
 
 ### Release History
