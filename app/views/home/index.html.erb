@@ -67,13 +67,13 @@
           <% if @registered_instructor == nil  %>
             <div class="column xpro2 is-quarter">
               <p>Click to register as an INSTRUCTOR!</p>
-              <%= image_tag 'instructor-icon.png' %>
+              <%= image_tag 'instructor-icon.png', :class => "scale-home-page-card-icon" %>
               <%= link_to "", instructors_reg_path, :class => "card-wrap" %>
             </div>
           <% elsif @registered_instructor != nil  %>
               <div class="column xpro2 is-quarter">
               <p>Click to CREATE A MEETUP as a instructor looking to teach</p>
-              <%= image_tag 'instructor-icon.png' %>
+              <%= image_tag 'instructor-icon.png', :class => "scale-home-page-card-icon" %>
               <%= link_to "", new_meetup_with_type_path("instructor"), :class => "card-wrap" %>
             </div>
           <% end %>
