@@ -140,7 +140,7 @@ https://dochub.com/christopherhullman/a8vbNm/bubblebuddies_wireframes?dt=Y3JmoEz
 
 [Evidence](https://i.imgur.com/jZNbUut.png) - https://i.imgur.com/jZNbUut.png
 
-Thank you to (@jawdinmorris)[https://github.com/jawdinmorris] for the code/app review
+Thank you to [@jawdinmorris](https://github.com/jawdinmorris) for the code/app review
 
 ### Release History
 
