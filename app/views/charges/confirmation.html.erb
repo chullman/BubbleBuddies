@@ -1,8 +1,8 @@
-
-<h1>Thank you for your payment!</h1>
-<h2>Now joining you to the meetup, please wait...</h2>
-<%= link_to 'Click here if you are not redirected automatically', join_meetup_path(params[:id]) %>
-
+<div class="confirmation-wrapper">
+  <h1 class="confirmation-heading">Success!</h1>
+  <h2 class="title is-2">Now joining you to the meetup, please wait...</h2>
+  <%= link_to 'Click here if you are not redirected automatically', join_meetup_path(params[:id]), :class => "button is-link" %>
+</div>
 
 <%= form_for :nil, url: join_meetup_path(params[:id]), :html => {:id => "join_meetup_form"}, method: :post do |form| %>
   <%= form.submit "Submit", id: "join_meetup_button"  %>

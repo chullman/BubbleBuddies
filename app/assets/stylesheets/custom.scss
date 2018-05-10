@@ -296,3 +296,16 @@ form .control-left-align {
   width: 150px;
   height: 150px;
 }
+
+.confirmation-heading {
+  @include default_h1;
+}
+
+.confirmation-wrapper {
+  width: 500px;
+  display: block;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
