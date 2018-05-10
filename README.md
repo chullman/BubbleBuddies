@@ -113,6 +113,12 @@ b. Normal user - email: test@test.com, password: test
 
 [Screenshot](https://i.imgur.com/pjug9zn.jpg)
 
+### User Stories for MVP
+
+[Trello Link](https://trello.com/b/JkR55AIR/bubble-buddies-mvp) - https://trello.com/b/JkR55AIR/bubble-buddies-mvp
+
+[Screenshot](https://i.imgur.com/pNvdIg2.jpg)
+
 ### Release History
 
 11/05/2018 - Version 0.1 - Prototype app deployed and live to heroku using production env
