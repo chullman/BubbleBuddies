@@ -125,10 +125,20 @@ b. Normal user - email: test@test.com, password: test
 
 [Screenshot](https://i.imgur.com/pNvdIg2.jpg) - https://i.imgur.com/pNvdIg2.jpg
 
+### Project Plan for MVP - Kanban
+
+[Trello Link](https://trello.com/b/o9HIJphF/bubble-buddies-project-plan-for-mvp) - https://trello.com/b/o9HIJphF/bubble-buddies-project-plan-for-mvp
+
+[Screenshot](https://i.imgur.com/wowwZAE.png) - https://i.imgur.com/wowwZAE.png
+
 ### Wireframes
 
 [DocHub Link](https://dochub.com/christopherhullman/a8vbNm/bubblebuddies_wireframes?dt=Y3JmoEzT-6WB7DUApmxD) - 
 https://dochub.com/christopherhullman/a8vbNm/bubblebuddies_wireframes?dt=Y3JmoEzT-6WB7DUApmxD
+
+### Evidence of Request for Code Review
+
+[Evidence](https://i.imgur.com/o9qX9oc.png) - https://i.imgur.com/o9qX9oc.png
 
 ### Release History
 
