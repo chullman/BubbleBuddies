@@ -111,6 +111,8 @@ b. Normal user - email: test@test.com, password: test
 
 [ERD Link](https://drive.google.com/file/d/1fOhDAAZVQjMLSxM36yNxYSdg6AMeWfSh/view?usp=sharing) - https://drive.google.com/file/d/1fOhDAAZVQjMLSxM36yNxYSdg6AMeWfSh/view?usp=sharing
 
+[Screenshot](https://i.imgur.com/pjug9zn.jpg)
+
 ### Release History
 
 11/05/2018 - Version 0.1 - Prototype app deployed and live to heroku using production env
