@@ -11,7 +11,7 @@ Excellent meetup platforms exist such as [meetup.com](https://www.meetup.com/) f
 
 For most qualified, recreational SCUBA divers it is mandatory around the world that divers must always dive in buddy pairs. Unless you're a regular member of a dive club, it can be difficult for individuals to find a buddy to dive with that would be compatible to your diving experience level, and to your location and available day/time. This is the key problem that is intended to be solved with Bubble Buddies.
 
-When a user (refered to in this app as a "buddy) signs up for the first time, they must also specify whether they're a regular diver (not instructor), or a dive instructor, before they can create or join a meetup. As part of this sign up and registration process, they must also specify what their experience is, and in the case of an instructor, what courses (include dive agency) they're able to teach. This filtering and tailorisation, again, allows and ensures that buddies have the best dive experience possible, without the hassle of any loose, unspecialised meetup planning logistics.
+When a user (refered to in this app as a "buddy") signs up for the first time, they must also specify whether they're a regular diver (not instructor), or a dive instructor, before they can create or join a meetup. As part of this sign up and registration process, they must also specify what their experience is, and in the case of an instructor, what courses (include dive agency) they're able to teach. This filtering and tailorisation, again, allows and ensures that buddies have the best dive experience possible, without the hassle of any loose, unspecialised meetup planning logistics.
 
 Dive instructors looking to teach a course or specialisation to a group of buddies and receive payment for their services aren't left out from this web app either. If a buddy creates a meetup as a dive instructor, they can specify how much they want to charge for the meetup to teach a course, and other buddies looking to join must make a payment before they're able to join (hence what makes this a two-sided marketplace). 
 
@@ -138,7 +138,9 @@ https://dochub.com/christopherhullman/a8vbNm/bubblebuddies_wireframes?dt=Y3JmoEz
 
 ### Evidence of Request for Code Review
 
-[Evidence](https://i.imgur.com/o9qX9oc.png) - https://i.imgur.com/o9qX9oc.png
+[Evidence](https://i.imgur.com/jZNbUut.png) - https://i.imgur.com/jZNbUut.png
+
+Thank you to (@jawdinmorris)[https://github.com/jawdinmorris] for the code/app review
 
 ### Release History
 
