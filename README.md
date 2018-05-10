@@ -5,7 +5,7 @@
 
 https://bubble-buddies.herokuapp.com
 
-### Problem Solved
+### Problem and Solution Solved
 
 Excellent meetup platforms exist such as [meetup.com](https://www.meetup.com/) for people to get together in thriving communities. Whilst it's certainly feasible to host SCUBA diving meetups on such platforms, the interface and functionalities are not tailored specifically for recreational divers and dive instructors to be able to find and get together for the most compatible and tailored SCUBA diving experience.
 
@@ -20,6 +20,12 @@ To summarise, Bubble Buddies, once ready for production deployment, will provide
 * Recreational divers (not at an instructor) can find and meetup with other buddies for a dive, as well as join a meetup by an instructor looking to teach a course or specialisation.
 * Dive instructors can sell their services by creating a meetup to teach a course or specialisation, and to accept payment for it.
 * Reduced logistics in meetup planning with tailored forms and other interfaces to show and share all the most important information to a dive meetup.
+
+#### Ethical Considerations 
+
+* Many buddies may use this platform to meet other buddies who they've never met before. This could potentially be dangerous.
+* Users could potentially exploit the system to stalk or harass others.
+* There is no filtering on the user profile picture upload and storage, so offensive images could be uploaded and displayed on the platform.
 
 ### Technical Summary
 
@@ -100,6 +106,10 @@ If you ran `rails db:seed` above, this will include a couple of test users:
 a. Admin user - email: admin@admin.com, password: admin
 
 b. Normal user - email: test@test.com, password: test
+
+### ERD Link
+
+[ERD Link](https://drive.google.com/file/d/1fOhDAAZVQjMLSxM36yNxYSdg6AMeWfSh/view?usp=sharing) - https://drive.google.com/file/d/1fOhDAAZVQjMLSxM36yNxYSdg6AMeWfSh/view?usp=sharing
 
 ### Release History
 
