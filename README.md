@@ -111,13 +111,24 @@ b. Normal user - email: test@test.com, password: test
 
 [ERD Link](https://drive.google.com/file/d/1fOhDAAZVQjMLSxM36yNxYSdg6AMeWfSh/view?usp=sharing) - https://drive.google.com/file/d/1fOhDAAZVQjMLSxM36yNxYSdg6AMeWfSh/view?usp=sharing
 
-[Screenshot](https://i.imgur.com/pjug9zn.jpg)
+[Screenshot](https://i.imgur.com/pjug9zn.jpg) - https://i.imgur.com/pjug9zn.jpg
+
+### Workflow Link
+
+[Workflow Link](https://drive.google.com/file/d/1TPMs2_Vbxc9dz3j1imZgP1X_YXm9h9QY/view?usp=sharing) - https://drive.google.com/file/d/1TPMs2_Vbxc9dz3j1imZgP1X_YXm9h9QY/view?usp=sharing
+
+[Screenshot](https://i.imgur.com/efbjGJU.jpg) - https://i.imgur.com/efbjGJU.jpg
 
 ### User Stories for MVP
 
 [Trello Link](https://trello.com/b/JkR55AIR/bubble-buddies-mvp) - https://trello.com/b/JkR55AIR/bubble-buddies-mvp
 
-[Screenshot](https://i.imgur.com/pNvdIg2.jpg)
+[Screenshot](https://i.imgur.com/pNvdIg2.jpg) - https://i.imgur.com/pNvdIg2.jpg
+
+### Wireframes
+
+[DocHub Link](https://dochub.com/christopherhullman/a8vbNm/bubblebuddies_wireframes?dt=Y3JmoEzT-6WB7DUApmxD) - 
+https://dochub.com/christopherhullman/a8vbNm/bubblebuddies_wireframes?dt=Y3JmoEzT-6WB7DUApmxD
 
 ### Release History
 
