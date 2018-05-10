@@ -14,6 +14,10 @@
   }
 }
 
+body {
+  background-color: $cartoon_blue;
+}
+
 .navbar-item {
   @include nil_top_bottom_padding;
 }
@@ -170,6 +174,11 @@ a
   @include notice_alert_box;
 }
 
+.alert:empty,
+.notice:empty {
+  display: none;
+}
+
 .admin-background {
   width: 100%;
   position: relative;
@@ -242,9 +251,8 @@ a
 
 .show-meetup-content-wrapper {
   
-  width: 50%;
-  margin-left: 10%;
-  margin-right: auto;
+  width: 100%;
+
 }
 
 .attending-bubbles {
@@ -252,14 +260,34 @@ a
 }
 
 .attending-resize {
-  width: 70%
+  width: 100%
 }
 
 .card-bottom-margin {
   margin-bottom: 10px;
 }
 
-.top-margin-offset-sm {
-  padding-top: 20px;
+.black-text {
+  color: $black
+}
 
+.meetup-show-map {
+  width: 800px;
+  height: 400px;
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  @include medium {
+    width: 400px;
+    height: 200px;
+  }
+}
+
+.no-location-warning {
+  color: $warning_red;
+}
+
+form .control-left-align {
+  text-align: left;
 }

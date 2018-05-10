@@ -2,7 +2,7 @@
 
 
 
-<section class="main-content columns is-fullheight custom-background-color top-margin-offset-sm">
+<section class="main-content columns is-fullheight custom-background-color">
   
   <aside class="column is-2 is-narrow-mobile is-fullheight section">
     <h2 class="title is-2">Buddies Attending: <%= image_tag 'css/bubbles_edit.png', :class => "attending-bubbles" %></h2>
@@ -36,65 +36,109 @@
 <div class="show-meetup-content-wrapper">
 
 
-<h2 class="show-meetup-name"><%= @meetup.name %></h2>
 
-
-<p>
-  <strong>Description:</strong>
-  <%= @meetup.description %>
-</p>
-
-<p>
-  <strong>Is commercial trip:</strong>
-  <%= @meetup.is_commercial_trip %>
-</p>
-
-<p>
-  <strong>Street address:</strong>
-  <%= @meetup.street_address.titleize %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @meetup.city.titleize %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @meetup.state.upcase %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @meetup.country.titleize %>
-</p>
-
-<% if !((@meetup.street_address == "") && (@meetup.city == "") && (@meetup.state == "") && (@meetup.country == "")) %>
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
+<div class="box">
+  <article class="media">
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <h2 class="show-meetup-name black-text"><%= @meetup.name %></h2>
+          <% owner_id = @meetup.meetupmembers.where("meetup_id = ? and is_owner = ?", @meetup.id, "true").first %>
+          <% owner = User.find(owner_id.user_id) %>
+          <medium>By <%=owner.first_name%> <%=owner.last_name%></medium>
+          <br>
+          <br>
+          <p class="black-text">
+            <strong>Details:</strong>
+            <%= @meetup.description %>
+          </p>
+        </p>
+      </div>
+    </div>
+  </article>
 </div>
-<% end %>
 
 
-<p>
-  <strong>Is boat required:</strong>
-  <%= @meetup.is_boat_required %>
-</p>
+<div class="box">
+  <article class="media">
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <h3 class="black-text">Important Information:</h3>
 
-<p>
-  <strong>Price:</strong>
-  <%= @meetup.price %>
-</p>
+            <p>
+              <strong>Is this a commercial trip?</strong>
+              <% if @meetup.is_commercial_trip == false %>
+                No
+              <% else %>
+                Yes
+              <% end %>
+            </p>
 
-<p>
-  <strong>Member limit:</strong>
-  <%= @meetup.member_limit %>
-</p>
+            <h4 class="black-text">Meeting Location:</h4>
 
-<p>
-  <strong>Date:</strong>
-  <%= @meetup.date %>
-</p>
+
+            <% if !((@meetup.street_address == "") && (@meetup.city == "") && (@meetup.state == "") && (@meetup.country == "")) %>
+            <p>
+              <strong>Street address:</strong>
+              <%= @meetup.street_address.titleize %>
+            </p>
+
+            <p>
+              <strong>City:</strong>
+              <%= @meetup.city.titleize %>
+            </p>
+
+            <p>
+              <strong>State:</strong>
+              <%= @meetup.state.upcase %>
+            </p>
+
+            <p>
+              <strong>Country:</strong>
+              <%= @meetup.country.titleize %>
+            </p>
+            <div class='meetup-show-map'>
+                <div id="map" class='meetup-show-map'></div>
+              </div>
+            <% else %>
+              <p class="no-location-warning">No meetup location has been specified!</p>
+            <% end %>
+
+            <h4 class="black-text">Meeting Time:</h4>
+            <h5>
+              <%= @meetup.date %>
+            </h5>
+
+            <p>
+              <strong>Is a boat required? (for non-commercial trips)</strong>
+              <% if @meetup.is_boat_required %>
+                Yes
+              <% else %>
+                No
+              <% end %>
+            </p>
+
+            <p>
+              <strong>Member limit:</strong>
+              <%= @meetup.member_limit %> people
+            </p>
+        </p>
+      </div>
+    </div>
+  </article>
+</div>
+
+
+
+
+
+
+
+
+
+
+
 
 <% if user_signed_in? %>
 <% is_joined = false%>
@@ -102,8 +146,8 @@
   <% if current_user.id == member.user_id %>
     <% is_joined = true %>
     <% if member.can_edit == true %>
-      <td><%= link_to 'Edit', edit_meetup_path(@meetup), :class => "button is-warning" %></td>
-    <td><%= link_to 'Destroy', @meetup, method: :delete, data: { confirm: 'Are you sure you want to delete this meetup?' }, :class => "button is-danger" %></td>
+      <td><%= link_to 'Edit Meetup', edit_meetup_path(@meetup), :class => "button is-warning" %></td>
+    <td><%= link_to 'Destroy Meetup', @meetup, method: :delete, data: { confirm: 'Are you sure you want to delete this meetup?' }, :class => "button is-danger" %></td>
     <% end %>
   <% end  %>
 <% end %>
@@ -113,15 +157,48 @@
   
   <% if @meetup.meetup_type == "diver" %>
     <% if !is_registered_as_diver_or_instructor? %>
-      <p><%= link_to 'Please register as a diver', divers_reg_path %> and/or <%= link_to 'please register as an instructor', instructors_reg_path %> to join this meetup! </p>
+      
+            <div class="box show-meetup-box-width-custom">
+        <article class="media">
+          <div class="media-content">
+            <div class="content">
+
+              <p><%= link_to 'Please register as a diver', divers_reg_path, :class => "button is-info" %> and/or <%= link_to 'please register as an instructor', instructors_reg_path, :class => "button is-info" %> to join this meetup! </p>
+
+            </div>
+          </div>
+        </article>
+      </div>
+
     <% else %>
       <%= link_to 'Join This Meetup :)', join_meetup_path(@meetup.id), method: :post, :class => "button is-primary" %>
     <% end %>
   <% else %>
     <% if !is_registered_as_diver_or_instructor? %>
-      <p><%= link_to 'Please register as a diver', divers_reg_path %> and/or <%= link_to 'please register as an instructor', instructors_reg_path %> to join this meetup! </p>
+
+      <div class="box show-meetup-box-width-custom">
+        <article class="media">
+          <div class="media-content">
+            <div class="content">
+
+              <p><%= link_to 'Please register as a diver', divers_reg_path, :class => "button is-info" %> and/or <%= link_to 'please register as an instructor', instructors_reg_path, :class => "button is-info" %> to join this meetup! </p>
+
+            </div>
+          </div>
+        </article>
+      </div>
+
     <% else %>
-      <%= form_tag charges_with_meetup_id_path(@meetup.id) do |f| %>
+
+      <div class="box show-meetup-box-width-custom">
+        <article class="media">
+          <div class="media-content">
+            <div class="content">
+              <h3 class="black-text">Price:</h3>
+              
+              <h4>$<%='%.2f' % @meetup.price%></h4>
+              
+                    <%= form_tag charges_with_meetup_id_path(@meetup.id) do |f| %>
       <article>
         <% if flash[:error].present? %>
           <div id="error_explanation">
@@ -137,6 +214,13 @@
               data-label="Pay and Join This Meetup"
               data-amount="<%= @meetup.convert_price_to_cents(@meetup.price) %>"
               data-locale="auto"></script>
+
+            </div>
+          </div>
+        </article>
+      </div>
+
+
       <% end %>
     <% end %>
   <% end %>
@@ -145,27 +229,40 @@
 <% end %>
 <% end %>
 
-<h2>Comments:</h2>
+<div class="box">
+  <article class="media">
+    <div class="media-content">
+      <div class="content">
+
+        <h3 class="black-text">Comments:</h3>
 <% @meetup.comments.each do |comment| %>
   <div>
     <h3><%= comment.user.first_name %> <%= comment.user.last_name %></h3>
     <p><%=comment.created_at %></p>
-    <p><%= comment.content %></p>
+    <p><strong><%= comment.content %></strong></p>
   </div>
 <% end %>
 
 <% if is_joined == true %>
+  <hr/>
   <%= form_for @comment, url: add_comment_path(@meetup.id), :method => :post do |f| %>
-    <div class="field">
-      <%= f.label :content %>
-      <%= f.text_field :content, id: :content %>
+    <div class="control control-left-align">
+      <%= f.label "Add a new comment:", :class => "label" %>
+      <%= f.text_area :content, id: :content %>
     </div>
     <%= f.submit "Add Comment" %>
   <% end %>
 <% end %>
 
+      </div>
+    </div>
+  </article>
+</div>
 
-<%= link_to 'Back', meetups_path %>
+
+
+
+<%= link_to 'Back', meetups_path, :class => "button is-info" %>
 
 <script type="text/javascript">
 handler = Gmaps.build('Google');
