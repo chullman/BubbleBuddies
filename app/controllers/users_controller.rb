@@ -17,26 +17,34 @@ class UsersController < ApplicationController
     @diver.qualification_id = params[:diver][:qualification_id]
 
     if params[:diver][:total_dives] == nil || params[:diver][:total_dives] == ''
-      @diver.total_dives = 0
-    end
-
-    if Diver.where(user_id: current_user.id).first != nil
-      
       respond_to do |format|
-        format.html { redirect_to home_index_path, alert: 'You have already registered as a diver' }
+        format.html { redirect_to divers_reg_path, alert: 'Please enter how many dives you have done' }
       end
-
+    elsif !(params[:diver][:total_dives].to_i > 0)
+      respond_to do |format|
+        format.html { redirect_to divers_reg_path, alert: 'Please enter how many dives you have done, greater than 0' }
+      end
     else
-
-      respond_to do |format|
-        if @diver.save!
-          format.html { redirect_to home_index_path, notice: 'Diver was successfully registered' }
-        else
-          format.html { render :new_diver }
+      if Diver.where(user_id: current_user.id).first != nil
+      
+        respond_to do |format|
+          format.html { redirect_to home_index_path, alert: 'You have already registered as a diver' }
         end
+  
+      else
+  
+        respond_to do |format|
+          if @diver.save!
+            format.html { redirect_to home_index_path, notice: 'Diver was successfully registered' }
+          else
+            format.html { render :new_diver }
+          end
+        end
+  
       end
-
     end
+
+
 
 
   end
@@ -56,6 +64,14 @@ class UsersController < ApplicationController
         format.html { redirect_to home_index_path, alert: 'You have already registered as an instructor' }
       end
 
+    elsif params[:instructor][:total_dives] == nil || params[:instructor][:total_dives] == ''
+      respond_to do |format|
+        format.html { redirect_to instructors_reg_path, alert: 'Please enter how many dives you have done' }
+      end
+    elsif !(params[:instructor][:total_dives].to_i > 0)
+      respond_to do |format|
+        format.html { redirect_to instructors_reg_path, alert: 'Please enter how many dives you have done, greater than 0' }
+      end
     else
 
       @instructor.user_id = current_user.id
@@ -79,7 +95,7 @@ class UsersController < ApplicationController
               end
               if course_to_teach_added == false
                 @instructor.destroy
-                format.html { redirect_to home_index_path, alert: 'You must specify at least one course or speciality that you can teach' }
+                format.html { redirect_to instructors_reg_path, alert: 'You must specify at least one course or speciality that you can teach' }
               else
                 format.html { redirect_to home_index_path, notice: 'Instructor was successfully registered' }
               end                 

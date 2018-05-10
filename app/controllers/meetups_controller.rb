@@ -33,11 +33,12 @@ class MeetupsController < ApplicationController
   # GET /meetups/new
   def new
     @meetup = Meetup.new
+
+
     if !(is_valid_user_type?)
       respond_to do |format|
         format.html { redirect_to meetups_path, notice: 'You cannot create a meetup of that user type' }
-      end
-    
+      end    
     end
   end
 
@@ -61,6 +62,24 @@ class MeetupsController < ApplicationController
       respond_to do |format|
         has_errored = true
         format.html { redirect_to new_meetup_with_type_path(params[:type]), alert: 'Meetup type must be of type diver or instructor' }
+      end
+    end
+
+    if !(has_errored)
+      if (params[:meetup][:name] == nil || params[:meetup][:name] == '') || (params[:meetup][:description] == nil || params[:meetup][:description] == '')
+        respond_to do |format|
+          has_errored = true
+          format.html { redirect_to new_meetup_with_type_path(params[:type]), alert: 'Please enter both a name and description for your meetup' }
+        end
+      end
+    end
+
+    if !(has_errored)
+      if !(params[:meetup][:member_limit].to_i > 0)
+        respond_to do |format|
+          has_errored = true
+          format.html { redirect_to new_meetup_with_type_path(params[:type]), alert: 'Please enter a member limit to this meetup, greater than 0' }
+        end
       end
     end
 
