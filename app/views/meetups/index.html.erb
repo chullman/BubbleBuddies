@@ -3,6 +3,7 @@
 <% if !(@meetups.any?) %>
   <div class="no-meetups-error">
     <h2>No meetups exist yet. Why not be the first to create one! :)</h2>
+    <%= link_to 'Clear Filters', meetups_path, class: "button is-info" %>
   </div>
 <% else %>
 
