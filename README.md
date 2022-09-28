@@ -1,8 +1,8 @@
 # Bubble Buddies
 ## Two-sided Marketplace App (Student Project)
 
-## Update 28/09/2022
-## *Under Construction*
+### Update 28/09/2022:
+### Under Construction
 
 **This app is currently being redeveloped from the ground up for Rails 6 on the *master* branch for easier CI deployment on 'Railway.app'**
 
