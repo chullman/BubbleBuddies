@@ -1,0 +1,1 @@
+web: rails webpacker:compile
