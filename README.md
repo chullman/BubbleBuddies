@@ -1,24 +1,11 @@
-# README
+# Bubble Buddies
+## Two-sided Marketplace App (Student Project)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Update 28/09/2022
+## *Under Construction*
 
-Things you may want to cover:
+**This app is currently being redeveloped from the ground up for Rails 6 on the *master* branch for easier CI deployment on 'Railway.app'**
 
-* Ruby version
+**Checkout the *2018-original* branch on this repo for the original project submission**
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+**Stay tuned!**
