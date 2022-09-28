@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
-  database: BubbleBuddies_production
-  username: BubbleBuddies
-  password: <%= ENV['BUBBLEBUDDIES_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  # database: <%= ENV['PGDATABASE'] %>
+  # username: <%= ENV['PGUSER'] %>
+  # password: <%= ENV['PGPASSWORD'] %>
