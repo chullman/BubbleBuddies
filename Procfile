@@ -1,1 +1,1 @@
-web: rails webpacker:compile
+web: rails webpacker:install && rails webpacker:compile
