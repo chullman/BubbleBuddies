@@ -1,0 +1,36 @@
+<div class="form-background">
+<div class="form-wrapper">
+
+<h1 class="user-type-heading">Register Yourself As a Diver</h1>
+
+<%= form_for(@diver, url: register_diver_path) do |form| %>
+
+  <div class="field">
+    <%= form.label "Total Dives?", :class => "label" %>
+    <div class="control">
+    <%= form.text_field :total_dives, id: :total_dives, :placeholder => "Please enter a number" %>
+    </div>
+  </div>
+
+    <div class="field">
+    <%= form.label "Which Agency Are You With?", :class => "label" %><br />
+    <div class="control">
+    <%= form.collection_select :certagency_id, @certagencies, :id, :cert_agency %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label "What's Your Qualification Level?", :class => "label" %><br />
+    <div class="control">
+    <%= form.collection_select :qualification_id, @qualifications, :id, :qualification %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Register", :class => "button is-primary" %>
+  </div>
+<% end %>
+
+</div>
+</div>
+
