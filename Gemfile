@@ -64,3 +64,9 @@ gem "carrierwave", "~> 2.2"
 gem "cloudinary", "~> 1.23"
 
 gem "prettier", "~> 3.2"
+
+gem "recaptcha", "~> 5.12"
+
+gem "geocoder", "~> 1.8"
+
+gem "gmaps4rails", "~> 2.1"

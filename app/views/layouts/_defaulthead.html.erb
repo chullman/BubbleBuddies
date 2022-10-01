@@ -1,4 +1,5 @@
     <title>Bubble Buddies</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,7 +10,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script src="//maps.google.com/maps/api/js?key=<%=ENV['google_api_key']%>"></script>
+    <script src="//maps.google.com/maps/api/js?key=<%=Rails.application.credentials[:GEOAPIFY_API_KEY]%>"></script>
     <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
