@@ -1,0 +1,107 @@
+<div class="form-background">
+<div class="form-wrapper">
+
+<h1 class="form-heading">Editing Meetup</h1>
+
+<%= form_with(model: @meetup, local: true, url: patch_meetup_with_type_path(@meetup.id)) do |form| %>
+  <% if @meetup.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@meetup.errors.count, "error") %> prohibited this meetup from being saved:</h2>
+
+      <ul>
+      <% @meetup.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name, :class => "label" %>
+    <div class="control">
+    <%= form.text_field :name %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :description, :class => "label" %>
+    <div class="control">
+    <%= form.rich_text_area :description %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_commercial_trip, :class => "label" %>
+    <div class="control">
+    <%= form.check_box :is_commercial_trip %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :street_address, :class => "label" %>
+    <div class="control">
+    <%= form.text_field :street_address %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :city, :class => "label" %>
+    <div class="control">
+    <%= form.text_field :city %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :state, :class => "label" %>
+    <div class="control">
+    <%= form.text_field :state %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :country, :class => "label" %>
+    <div class="control">
+    <%= form.text_field :country %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_boat_required, :class => "label" %>
+    <div class="control">
+    <%= form.check_box :is_boat_required %>
+    </div>
+  </div>
+
+  <% if is_instructor? %>
+    <div class="field">
+      <%= form.label :price, :class => "label"  %>
+      <div class="control">
+      <%= form.number_field :price %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :member_limit, :class => "label" %>
+    <div class="control">
+    <%= form.number_field :member_limit %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :date, :class => "label" %>
+    <div class="control">
+    <%= form.datetime_select :date %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Edit Meetup", :class => "button is-primary" %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', @meetup, :class => "default-scaffold-links"%> |
+<%= link_to 'Back', meetups_path, :class => "default-scaffold-links" %>
+
+</div>
+</div>

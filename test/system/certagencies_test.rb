@@ -1,9 +1,7 @@
 require "application_system_test_case"
 
 class CertagenciesTest < ApplicationSystemTestCase
-  setup do
-    @certagency = certagencies(:one)
-  end
+  setup { @certagency = certagencies(:one) }
 
   test "visiting the index" do
     visit certagencies_url
@@ -34,9 +32,7 @@ class CertagenciesTest < ApplicationSystemTestCase
 
   test "destroying a Certagency" do
     visit certagencies_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
+    page.accept_confirm { click_on "Destroy", match: :first }
 
     assert_text "Certagency was successfully destroyed"
   end

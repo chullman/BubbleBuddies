@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Meetups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Is commercial trip</th>
+      <th>Street address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Country</th>
+      <th>Is boat required</th>
+      <th>Price</th>
+      <th>Member limit</th>
+      <th>Date</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @meetups.each do |meetup| %>
+      <tr>
+        <td><%= meetup.name %></td>
+        <td><%= meetup.description %></td>
+        <td><%= meetup.is_commercial_trip %></td>
+        <td><%= meetup.street_address %></td>
+        <td><%= meetup.city %></td>
+        <td><%= meetup.state %></td>
+        <td><%= meetup.country %></td>
+        <td><%= meetup.is_boat_required %></td>
+        <td><%= meetup.price %></td>
+        <td><%= meetup.member_limit %></td>
+        <td><%= meetup.date %></td>
+        <td><%= meetup.latitude %></td>
+        <td><%= meetup.longitude %></td>
+        <td><%= link_to 'Show', meetup %></td>
+        <td><%= link_to 'Edit', edit_meetup_path(meetup) %></td>
+        <td><%= link_to 'Destroy', meetup, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Meetup', new_meetup_path %>

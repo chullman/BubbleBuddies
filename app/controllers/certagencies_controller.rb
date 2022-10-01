@@ -1,5 +1,5 @@
 class CertagenciesController < ApplicationController
-  before_action :set_certagency, only: %i[ show edit update destroy ]
+  before_action :set_certagency, only: %i[show edit update destroy]
 
   # GET /certagencies or /certagencies.json
   def index
@@ -25,11 +25,16 @@ class CertagenciesController < ApplicationController
 
     respond_to do |format|
       if @certagency.save
-        format.html { redirect_to certagency_url(@certagency), notice: "Certagency was successfully created." }
+        format.html do
+          redirect_to certagency_url(@certagency),
+                      notice: "Certagency was successfully created."
+        end
         format.json { render :show, status: :created, location: @certagency }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @certagency.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @certagency.errors, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -38,11 +43,16 @@ class CertagenciesController < ApplicationController
   def update
     respond_to do |format|
       if @certagency.update(certagency_params)
-        format.html { redirect_to certagency_url(@certagency), notice: "Certagency was successfully updated." }
+        format.html do
+          redirect_to certagency_url(@certagency),
+                      notice: "Certagency was successfully updated."
+        end
         format.json { render :show, status: :ok, location: @certagency }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @certagency.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @certagency.errors, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -52,19 +62,23 @@ class CertagenciesController < ApplicationController
     @certagency.destroy
 
     respond_to do |format|
-      format.html { redirect_to certagencies_url, notice: "Certagency was successfully destroyed." }
+      format.html do
+        redirect_to certagencies_url,
+                    notice: "Certagency was successfully destroyed."
+      end
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_certagency
-      @certagency = Certagency.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def certagency_params
-      params.require(:certagency).permit(:cert_agency)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_certagency
+    @certagency = Certagency.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def certagency_params
+    params.require(:certagency).permit(:cert_agency)
+  end
 end

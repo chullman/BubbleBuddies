@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  is_commercial_trip: false
+  street_address: MyString
+  city: MyString
+  state: MyString
+  country: MyString
+  is_boat_required: false
+  price: 1
+  member_limit: 1
+  date: 2022-10-01 12:21:08
+  latitude: 1.5
+  longitude: 1.5
+
+two:
+  name: MyString
+  is_commercial_trip: false
+  street_address: MyString
+  city: MyString
+  state: MyString
+  country: MyString
+  is_boat_required: false
+  price: 1
+  member_limit: 1
+  date: 2022-10-01 12:21:08
+  latitude: 1.5
+  longitude: 1.5

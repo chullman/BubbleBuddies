@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'mixins';
+@import "variables";
+@import "mixins";
 
 #join_meetup_form {
   display: none;
@@ -46,7 +46,6 @@ body {
   font-size: 1.25rem;
 }
 
-
 .hero-body {
   background-image: url("css/hero_edit.jpg");
   background-repeat: no-repeat;
@@ -76,7 +75,6 @@ body {
   color: white;
   letter-spacing: 2px;
   padding: 10px 10px 10px 10px;
-  
 }
 
 .small-margin-top-bottom {
@@ -92,17 +90,16 @@ body {
   flex-direction: column;
 }
 
-
 .cards .column {
   height: 300px;
   margin: 10px;
   text-align: center;
   font-size: 2em;
--webkit-box-shadow: -7px 11px 25px -9px rgba(0,0,0,1);
--moz-box-shadow: -7px 11px 25px -9px rgba(0,0,0,1);
-box-shadow: -7px 11px 25px -9px rgba(0,0,0,1);
-background-color: $light_blue;
-position: relative;
+  -webkit-box-shadow: -7px 11px 25px -9px rgba(0, 0, 0, 1);
+  -moz-box-shadow: -7px 11px 25px -9px rgba(0, 0, 0, 1);
+  box-shadow: -7px 11px 25px -9px rgba(0, 0, 0, 1);
+  background-color: $light_blue;
+  position: relative;
 }
 
 .cards .column p {
@@ -111,7 +108,6 @@ position: relative;
 }
 
 .cards img {
-
   max-width: 230px;
   max-height: 230px;
   width: auto;
@@ -128,7 +124,7 @@ position: relative;
 }
 
 .form-heading {
- @include default-h1
+  @include default-h1;
 }
 
 .form-background {
@@ -162,9 +158,8 @@ form .button {
 form .control {
   @include force_horizontal_center;
 }
-a
-.hero.is-large .hero-body {
-    padding-bottom: 10rem;
+a .hero.is-large .hero-body {
+  padding-bottom: 10rem;
 }
 
 .notice {
@@ -253,9 +248,7 @@ a
 }
 
 .show-meetup-content-wrapper {
-  
   width: 100%;
-
 }
 
 .attending-bubbles {
@@ -263,7 +256,7 @@ a
 }
 
 .attending-resize {
-  width: 100%
+  width: 100%;
 }
 
 .card-bottom-margin {
@@ -271,7 +264,7 @@ a
 }
 
 .black-text {
-  color: $black
+  color: $black;
 }
 
 .meetup-show-map {
@@ -312,7 +305,6 @@ form .control-left-align {
   margin-right: auto;
   text-align: center;
 }
-
 
 .no-meetups-clear-filter-container {
   text-align: center;
