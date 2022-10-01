@@ -1,7 +1,7 @@
 development:
-  cloud_name: <%= ENV['CLOUDINARY_CLOUD_NAME'] %>
-  api_key: <%= ENV['CLOUDINARY_API_KEY'] %>
-  api_secret: <%= ENV['CLOUDINARY_API_SECRET'] %>
+  cloud_name: <%= Rails.application.credentials[:CLOUDINARY_CLOUD_NAME] %>
+  api_key: <%= Rails.application.credentials[:CLOUDINARY_API_KEY] %>
+  api_secret: <%= Rails.application.credentials[:CLOUDINARY_API_SECRET] %>
   enhance_image_tag: true
   static_image_support: false
 production:
@@ -11,8 +11,8 @@ production:
   enhance_image_tag: true
   static_image_support: true
 test:
-  cloud_name: <%= ENV['CLOUDINARY_CLOUD_NAME'] %>
-  api_key: <%= ENV['CLOUDINARY_API_KEY'] %>
-  api_secret: <%= ENV['CLOUDINARY_API_SECRET'] %>
+  cloud_name: <%= Rails.application.credentials[:CLOUDINARY_CLOUD_NAME] %>
+  api_key: <%= Rails.application.credentials[:CLOUDINARY_API_KEY] %>
+  api_secret: <%= Rails.application.credentials[:CLOUDINARY_API_SECRET] %>
   enhance_image_tag: true
   static_image_support: false

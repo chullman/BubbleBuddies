@@ -1,2 +1,84 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<section class="hero is-large is-bold">
+    <div class="hero-body">
+      <div class="container has-text-right">
+        <div class="top-align-text">
+          <h1 class="title">
+            For divers of all levels!
+          </h1>
+          <h2 class="subtitle">
+            A friendly meetup platform for divers of all levels to find dive buddies, and for dive instructors to offer their services!
+          </h2>
+        </div>
+      </div>
+      <br />
+      <div class="container has-text-right">
+        <% if !(user_signed_in?) %>
+          <a href="<%= new_user_session_path %>" class="button is-large is-info small-margin-top-bottom">Please login or register an account!</a>
+        <% elsif user_signed_in? %>
+          <% if @registered_diver == nil && @registered_instructor == nil %>
+            <a href="#cards" class="button is-large is-info small-margin-top-bottom">Are you a diver or an instructor?</a>
+          <% else %>
+            <a href="#cards" class="button is-large is-info small-margin-top-bottom">Create a meetup or join an existing one :)</a>
+          <% end %>
+        <% end %>
+
+      </div>
+    </div>
+</section>
+
+<% if !(user_signed_in?) %>
+<section class="cards-container">
+    <div class="section cards" id="cards">
+      <div class="container">
+        <div class="columns-for-home is-multiline">
+            <div class="column xpro2 is-quarter">
+              <p>View EXISTING MEETUPS</p>
+              <%= image_tag 'meetup-icon.png' %>
+              <%= link_to "", meetups_path, :class => "card-wrap" %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<% elsif user_signed_in? %>
+  <section class="cards-container">
+    <div class="section cards" id="cards">
+      <div class="container">
+        <div class="columns is-multiline">
+            <div class="column xpro2 is-quarter">
+              <p>View EXISTING MEETUPS</p>
+              <%= image_tag 'meetup-icon.png' %>
+              <%= link_to "", meetups_path, :class => "card-wrap" %>
+            </div>
+          <% if @registered_diver == nil  %>
+            
+            <div class="column xpro2 is-quarter">
+              <p>Click to register as a DIVER!</p>
+              <%= image_tag 'diver-icon.png' %>
+              <%= link_to "", divers_reg_path, :class => "card-wrap" %>
+            </div>
+          <% elsif @registered_diver != nil  %>
+            <div class="column xpro2 is-quarter">
+              <p>Click to CREATE A MEETUP as a diver looking for buddies or an instructor</p>
+              <%= image_tag 'diver-icon.png' %>
+              <%= link_to "", new_meetup_with_type_path("diver"), :class => "card-wrap" %>
+            </div>
+          <% end %>
+          <% if @registered_instructor == nil  %>
+            <div class="column xpro2 is-quarter">
+              <p>Click to register as an INSTRUCTOR!</p>
+              <%= image_tag 'instructor-icon.png', :class => "scale-home-page-card-icon" %>
+              <%= link_to "", instructors_reg_path, :class => "card-wrap" %>
+            </div>
+          <% elsif @registered_instructor != nil  %>
+              <div class="column xpro2 is-quarter">
+              <p>Click to CREATE A MEETUP as a instructor looking to teach</p>
+              <%= image_tag 'instructor-icon.png', :class => "scale-home-page-card-icon" %>
+              <%= link_to "", new_meetup_with_type_path("instructor"), :class => "card-wrap" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
