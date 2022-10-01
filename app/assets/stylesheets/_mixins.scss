@@ -1,0 +1,48 @@
+@mixin nil_top_bottom_padding {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+@mixin small {
+  @media only screen and (max-width: 500px) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media only screen and (max-width: 1000px) {
+    @content;
+  } 
+}
+
+@mixin small_margin_top_bottom {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+@mixin force_horizontal_center {
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  float: none;
+}
+
+@mixin notice_alert_box {
+  width: 100%;
+  height: 35px;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: bold;
+}
+
+@mixin default_h1 {
+  font-family: $font_patua;
+  color: $light_blue;
+  letter-spacing: 2px;
+  padding: 10px 10px 10px 10px;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  font-size: 2.5rem;
+}
