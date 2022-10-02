@@ -15,11 +15,11 @@ elsif Rails.env.production?
 
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
-  address:              'smtp.sendgrid.net',
+  address:              'in-v3.mailjet.com',
   port:                 587,
   domain:               'railway.app',
-  user_name:            'apikey',
-  password:             ENV["SENDGRID_API_KEY"],
+  user_name:            ENV["MAILJET_API_KEY"],
+  password:             ENV["MAILJET_SECRET_KEY"],
   authentication:       'plain',
   enable_starttls_auto: true 
 }
