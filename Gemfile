@@ -70,3 +70,5 @@ gem "recaptcha", "~> 5.12"
 gem "geocoder", "~> 1.8"
 
 gem "gmaps4rails", "~> 2.1"
+
+gem "stripe", "~> 7.1"

@@ -8,7 +8,7 @@ class CreateMeetups < ActiveRecord::Migration[6.1]
       t.string :state
       t.string :country
       t.boolean :is_boat_required
-      t.integer :price
+      t.decimal :price
       t.integer :member_limit
       t.datetime :date
       t.float :latitude
