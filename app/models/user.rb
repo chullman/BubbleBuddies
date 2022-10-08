@@ -25,5 +25,4 @@ class User < ApplicationRecord
   has_one :skipper
   has_one :diver
   has_many :comments
-  
 end

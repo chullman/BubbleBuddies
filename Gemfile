@@ -70,3 +70,7 @@ gem "geocoder", "~> 1.8"
 gem "gmaps4rails", "~> 2.1"
 
 gem "stripe", "~> 7.1"
+
+gem "rufo", "~> 0.13.0"
+
+gem "htmlbeautifier", "~> 1.4"

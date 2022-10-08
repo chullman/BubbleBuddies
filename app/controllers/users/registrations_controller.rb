@@ -14,17 +14,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
 
     if verify_recaptcha(model: resource)
-      
       if (params[:user][:image]) != nil
         resource.image = (params[:user][:image]).open
       else
-        resource.image = Rails.root.join('app', 'assets', 'images', 'default_profile_pic.png').open
+        resource.image = Rails.root.join("app", "assets", "images", "default_profile_pic.png").open
       end
-  
+
       resource.is_disabled = false
 
       resource.add_role :normal
-      
+
       resource.save
       yield resource if block_given?
       if resource.persisted?

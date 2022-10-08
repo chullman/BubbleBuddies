@@ -1,5 +1,4 @@
 class AdminsController < ApplicationController
-
   before_action :restrict_to_admin, only: [:index, :edit_permissions, :update_permissions, :edit_enablement, :update_enablement, :edit_user_deletion, :destroy_user]
   before_action :disallow_disabled
 
@@ -14,9 +13,7 @@ class AdminsController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-
       if params.has_key?(:user)
-
         if !((params[:user][:input_roles]).include? "admin")
           @user.remove_role :admin
         end
@@ -40,16 +37,15 @@ class AdminsController < ApplicationController
       if !(@user.has_role? :normal)
         @user.add_role :normal
       end
-
     end
-    
+
     redirect_to :edit_permissions
   end
 
   private
 
   def user_params
-      params.permit(:role, :is_disabled, input_roles: [])
+    params.permit(:role, :is_disabled, input_roles: [])
   end
 
   def restrict_to_admin
@@ -60,17 +56,15 @@ class AdminsController < ApplicationController
     if !(current_user.has_role? :admin)
       redirect_to root_path
     end
-
   end
 
   def disallow_disabled
     if user_signed_in?
       if current_user.has_role? :disabled
         respond_to do |format|
-          format.html { redirect_to new_meetup_with_type_path(params[:type]), alert: 'Your account has been disabled' }
+          format.html { redirect_to new_meetup_with_type_path(params[:type]), alert: "Your account has been disabled" }
         end
       end
     end
   end
-
 end

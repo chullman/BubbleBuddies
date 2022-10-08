@@ -1,11 +1,7 @@
 <div class="form-background">
-<div class="form-wrapper">
-
-<h1 class="form-heading">New Meetup</h1>
-
-<%= render 'form', meetup: @meetup %>
-
-<%= link_to 'Back', meetups_path, :class => "default-scaffold-links" %>
-
-</div>
+  <div class="form-wrapper">
+    <h1 class="form-heading">New Meetup</h1>
+    <%= render 'form', meetup: @meetup %>
+    <%= link_to 'Back', meetups_path, :class => "default-scaffold-links" %>
+  </div>
 </div>

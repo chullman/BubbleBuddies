@@ -3,13 +3,11 @@
   <head>
     <%= render partial: "/layouts/defaulthead" %>
   </head>
-
   <body>
-
-        <script>
+    <script>
       //document.addEventListener('DOMContentLoaded', function () {
       $(document).ready(function() {
-        
+
         // Get all "navbar-burger" elements
         var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
@@ -34,56 +32,38 @@
 
       });
     </script>
-
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="../">
-      <%= image_tag 'css/navbar_brand.png' %>
-      
-    </a>
-
-    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu" id="navMenu">
-      <div class="navbar-end">
-
-          <%= image_tag 'css/bubbles_edit.png' %>
-
-          <%= link_to 'Home', home_index_path, :class => "navbar-item" %>
-
-        <% if user_signed_in?%>
-
-            <%= link_to "Logout", destroy_user_session_path, :class => "navbar-item", method: :delete %>
-
-
-            <%= link_to "Account Settings", edit_user_registration_path, :class => "navbar-item" %>
-
-            <%= link_to "View existing meetups", meetups_path, :class => "navbar-item" %>
-
-          <% if current_user.has_role? :admin %>
-            <%= link_to 'Admin Settings', admins_path, :class => "navbar-item warning-link" %>
-          <% end %>
-        <% else%>
-
-            <%= link_to 'Login', new_user_session_path, :class => "navbar-item" %>
-
-
-            <%= link_to 'Register', new_user_registration_path, :class => "navbar-item" %>
-
-        <% end %>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="../">
+          <%= image_tag "css/navbar_brand.png" %>
+        </a>
+        <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
       </div>
-  </div>
-</nav>
-
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
-
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end">
+          <%= image_tag "css/bubbles_edit.png" %>
+          <%= link_to "Home", home_index_path, :class => "navbar-item" %>
+          <% if user_signed_in? %>
+            <%= link_to "Logout", destroy_user_session_path, :class => "navbar-item", method: :delete %>
+            <%= link_to "Account Settings", edit_user_registration_path, :class => "navbar-item" %>
+            <%= link_to "View existing meetups", meetups_path, :class => "navbar-item" %>
+            <% if current_user.has_role? :admin %>
+              <%= link_to "Admin Settings", admins_path, :class => "navbar-item warning-link" %>
+            <% end %>
+          <% else %>
+            <%= link_to "Login", new_user_session_path, :class => "navbar-item" %>
+            <%= link_to "Register", new_user_registration_path, :class => "navbar-item" %>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
-
     <%= render partial: "/layouts/defaultfoot" %>
   </body>
 </html>

@@ -12,26 +12,25 @@ Role.create name: :normal
 
 user = User.new
 user.skip_confirmation!
-user.email = 'admin@admin.com'
-user.password = 'admin'
-user.first_name = 'admin'
-user.last_name = 'admin'
-#user.role = Role.where(role: 'admin').first
+user.email = "admin@admin.com"
+user.password = "admin"
+user.first_name = "admin"
+user.last_name = "admin"
 user.add_role :admin
 user.add_role :normal
 user.is_disabled = false
-user.image = Rails.root.join('app', 'assets', 'images', 'admin-diver.jpg').open
+user.image = Rails.root.join("app", "assets", "images", "admin-diver.jpg").open
 user.save!
 
 user = User.new
 user.skip_confirmation!
-user.email = 'test@test.com'
-user.password = 'test'
-user.first_name = 'test'
-user.last_name = 'test'
+user.email = "test@test.com"
+user.password = "test"
+user.first_name = "test"
+user.last_name = "test"
 user.add_role :normal
 user.is_disabled = false
-user.image = Rails.root.join('app', 'assets', 'images', 'test-diver.jpg').open
+user.image = Rails.root.join("app", "assets", "images", "test-diver.jpg").open
 user.save!
 
 Certagency.create([{ cert_agency: "PADI" }, { cert_agency: "SSI" }, { cert_agency: "NAUI" }])

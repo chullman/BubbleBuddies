@@ -1,37 +1,28 @@
 <div class="form-background">
-<div class="form-wrapper">
-<h1 class="form-heading">Control access for users</h1>
-
-<% @users.each do |user| %>
-
-  <p>
-    <strong><%= user.email %></strong>
-  
-
-    <%= form_for user, url: update_permissions_path(user), :method => :put do |f| %>
- 
-        <% Role.all.each do |role| %>
-
+  <div class="form-wrapper">
+    <h1 class="form-heading">Control access for users</h1>
+    <% @users.each do |user| %>
+      <p>
+        <strong><%= user.email %></strong>
+        <%= form_for user, url: update_permissions_path(user), :method => :put do |f| %>
+          <% Role.all.each do |role| %>
             <% if (role.name == "admin") && (user.has_role? :admin) %>
-              <%= f.check_box :input_roles, {multiple: true, checked: true}, role.name, nil %>
+              <%= f.check_box :input_roles, { multiple: true, checked: true }, role.name, nil %>
             <% elsif (role.name == "disabled") && (user.has_role? :disabled) %>
-              <%= f.check_box :input_roles, {multiple: true, checked: true}, role.name, nil %>
+              <%= f.check_box :input_roles, { multiple: true, checked: true }, role.name, nil %>
             <% elsif (role.name == "normal") && (user.has_role? :normal) %>
-              <%= f.check_box :input_roles, {multiple: true, checked: true, disabled: true}, role.name, nil %>
+              <%= f.check_box :input_roles, { multiple: true, checked: true, disabled: true }, role.name, nil %>
             <% elsif (role.name == "normal") && (!(user.has_role? :normal)) %>
-              <%= f.check_box :input_roles, {multiple: true, disabled: true}, role.name, nil %>
+              <%= f.check_box :input_roles, { multiple: true, disabled: true }, role.name, nil %>
             <% else %>
-              <%= f.check_box :input_roles, {multiple: true}, role.name, nil %>
+              <%= f.check_box :input_roles, { multiple: true }, role.name, nil %>
             <% end %>
             <%= role.name %>
+          <% end %>
+          <%= f.submit "Change", data: { confirm: "Are you sure you want to make this change for user: #{user.email}" }, :class => "button is-danger" %>
         <% end %>
-
-      <%= f.submit "Change", data: { confirm: "Are you sure you want to make this change for user: #{user.email}" }, :class => "button is-danger" %>
+        <br />
+      </p>
     <% end %>
-
-  <br />
-  </p>
-
-<% end %>
-</div>
+  </div>
 </div>

@@ -2,7 +2,6 @@
   <% if certagency.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(certagency.errors.count, "error") %> prohibited this certagency from being saved:</h2>
-
       <ul>
         <% certagency.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,12 +9,10 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= form.label :cert_agency %>
     <%= form.text_field :cert_agency %>
   </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>
