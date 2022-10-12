@@ -82,7 +82,7 @@ test:
 production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
-  database: BubbleBuddies_production
+  database: railway
   # database: <%= ENV['PGDATABASE'] %>
   # username: <%= ENV['PGUSER'] %>
   # password: <%= ENV['PGPASSWORD'] %>
