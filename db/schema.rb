@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 99) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "timescaledb"
 
   create_table "abletoteaches", force: :cascade do |t|
     t.bigint "instructor_id"
