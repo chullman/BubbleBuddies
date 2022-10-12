@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "Executing seeds.rb please wait..."
+
 Role.create name: :admin
 Role.create name: :disabled
 Role.create name: :normal
@@ -180,3 +182,5 @@ course.is_speciality_course = true
 course.is_introductory_course = false
 course.certagency_id = 2
 course.save!
+
+puts "Finished executing seeds.rb."
