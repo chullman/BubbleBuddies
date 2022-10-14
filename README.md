@@ -116,7 +116,11 @@ Assuming you have a Rails environment up and running:
 
 7) Keep the generated `/config/credentials/development.key` safe and private
 
-8) Create and migrate the database:
+8) In `/config/initializers/devise.rb` you will need to specify your mail sender address as the value for `config.mailer_sender`
+
+9) OPTIONAL: In `/config/environments/development.rb` configure the values for `config.action_mailer.default_url_options` for the mailer on development
+
+10) Create and migrate the database:
 
     a. `rails db:create`
   
