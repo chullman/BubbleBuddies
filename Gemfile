@@ -74,3 +74,5 @@ gem "stripe", "~> 7.1"
 gem "rufo", "~> 0.13.0"
 
 gem "htmlbeautifier", "~> 1.4"
+
+gem "net-smtp", "~> 0.3.3"

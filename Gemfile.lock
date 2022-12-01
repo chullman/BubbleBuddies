@@ -137,6 +137,10 @@ GEM
     mini_mime (1.1.2)
     minitest (5.16.3)
     msgpack (1.6.0)
+    net-protocol (0.1.3)
+      timeout
+    net-smtp (0.3.3)
+      net-protocol
     netrc (0.11.0)
     nio4r (2.5.8)
     nokogiri (1.13.9-x86_64-linux)
@@ -229,6 +233,7 @@ GEM
     stripe (7.1.0)
     thor (1.2.1)
     tilt (2.0.11)
+    timeout (0.3.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -276,6 +281,7 @@ DEPENDENCIES
   htmlbeautifier (~> 1.4)
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  net-smtp (~> 0.3.3)
   pg (~> 1.1)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
