@@ -76,3 +76,7 @@ gem "rufo", "~> 0.13.0"
 gem "htmlbeautifier", "~> 1.4"
 
 gem "net-smtp", "~> 0.3.3"
+
+gem "net-imap", "~> 0.3.1"
+
+gem "net-pop", "~> 0.1.2"
