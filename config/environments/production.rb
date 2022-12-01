@@ -16,7 +16,7 @@ Rails.application.configure do
   config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
 
-  config.hosts << "bubblebuddies.up.railway.app"
+  config.hosts << "bubblebuddies.herokuapp.com"
   config.hosts << "bubblebuddies.chullman.com"
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]

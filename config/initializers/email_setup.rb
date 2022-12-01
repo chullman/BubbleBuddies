@@ -14,7 +14,7 @@ elsif Rails.env.production?
   ActionMailer::Base.smtp_settings = {
     address: "in-v3.mailjet.com",
     port: 587,
-    domain: "railway.app",
+    domain: "herokuapp.com",
     user_name: ENV["MAILJET_API_KEY"],
     password: ENV["MAILJET_SECRET_KEY"],
     authentication: "plain",
