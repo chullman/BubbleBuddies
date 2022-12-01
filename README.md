@@ -172,8 +172,8 @@ https://dochub.com/christopherhullman/a8vbNm/bubblebuddies_wireframes?dt=Y3JmoEz
 Thank you to [@jawdinmorris](https://github.com/jawdinmorris) for the code/app review
 
 ### Release History
-
-11/05/2018 - Version 0.1 - Prototype app deployed and live to heroku using production env
+14/10/2022 - Version 0.2 - Prototype app rebuilt for Rails 6 and new APIs and Ruby Gems and configured for deployment to Railway PaaS
+11/05/2018 - Version 0.1 - Prototype app deployed and live to Heroku using production env
 
 ### Developer and Designer
 
