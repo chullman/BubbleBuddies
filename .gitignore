@@ -57,3 +57,5 @@ yarn-debug.log*
 /config/credentials/development.key
 
 /config/master.key
+
+/config/credentials/production.key
